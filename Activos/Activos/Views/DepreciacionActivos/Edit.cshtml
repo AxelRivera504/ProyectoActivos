@@ -1,0 +1,256 @@
+﻿@model Activos.Models.tbActivos
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index3.html" class="brand-link">
+        <img src="~/Content/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light">Activos</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+                <img src="~/Content/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+            </div>
+            <div class="info">
+                <a href="#" class="d-block"> @Session["FullName"].ToString()</a>
+            </div>
+        </div>
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <!-- Add icons to the links using the .nav-icon class
+    with font-awesome or any other icon font library -->
+                <li class="nav-item ">
+                    <a href="@Url.Action("Index", "Home")" class="nav-link">
+                        <i class="nav-icon fas fa-home"></i>
+                        <p>
+                            Inicio
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-business-time"></i>
+                        <p>
+                            Reportes
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index", "Reportes")" class="nav-link ">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Activos por fechas</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("ReporteNoActivos", "Reportes")" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Activos Bajados</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("ReporteActivos", "Reportes")" class="nav-link ">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Activos No Bajados</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item menu-open">
+                    <a href="#" class="nav-link active">
+                        <i class="nav-icon fas fa-business-time"></i>
+                        <p>
+                            Activos
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index", "DepreciacionActivos")" class="nav-link active">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Activos</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index", "VidaUtil")" class="nav-link ">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Vida Util</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-person-booth"></i>
+                        <p>
+                            General
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index", "Clientes")" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Clientes</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-user-alt"></i>
+                        <p>
+                            Acceso
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index", "Usuarios")" class="nav-link ">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Usuarios</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+</aside>
+
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>
+                       Edición Activos
+                    </h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Inicio</a></li>
+
+                        <li class="breadcrumb-item active"><a href="@Url.Action("Index", "DepreciacionActivos")"> Activos</a></li>
+
+                        <li class="breadcrumb-item active">Editar Activos</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <div class="container-fluid">
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-body pt-0 mt-0">
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="row" hidden>
+                        @Html.EditorFor(model => model.acvo_Id, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-sm-6">
+                            @Html.LabelFor(model => model.acvo_Nombre, htmlAttributes: new { @class = "control-label" })
+                            @Html.ValidationMessageFor(model => model.acvo_Nombre, "", new { @class = "text-danger", @Style = "font-size: 14px;" })
+
+                            @Html.EditorFor(model => model.acvo_Nombre, new { htmlAttributes = new { @class = "form-control", @maxlength = "200" } })
+                        </div>
+                        <div class="col-sm-6">
+                            @Html.LabelFor(model => model.acvo_NumeroSerie, htmlAttributes: new { @class = "control-label" })
+                            @Html.ValidationMessageFor(model => model.acvo_NumeroSerie, "", new { @class = "text-danger", @Style = "font-size: 14px;" })
+
+                            @Html.EditorFor(model => model.acvo_NumeroSerie, new { htmlAttributes = new { @class = "form-control", @maxlength = "20" } })
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-sm-6">
+                            @Html.LabelFor(model => model.viut_Id, "viut_Id", htmlAttributes: new { @class = "control-label" })
+                            @Html.ValidationMessageFor(model => model.viut_Id, "", new { @class = "text-danger", @Style = "font-size: 14px;" })
+
+                            @Html.DropDownList("viut_Id", null, htmlAttributes: new { @class = "form-control" })
+                        </div>
+                        <div class="col-sm-6">
+                            @Html.LabelFor(model => model.clie_Id, "clie_Id", htmlAttributes: new { @class = "control-label" })
+                            @Html.ValidationMessageFor(model => model.clie_Id, "", new { @class = "text-danger", @Style = "font-size: 14px;" })
+
+                            @Html.DropDownList("clie_Id", null, htmlAttributes: new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-sm-6">
+                            @Html.LabelFor(model => model.acvo_Ubicacion, htmlAttributes: new { @class = "control-label" })
+                            @Html.ValidationMessageFor(model => model.acvo_Ubicacion, "", new { @class = "text-danger", @Style = "font-size: 14px;" })
+
+                            @Html.EditorFor(model => model.acvo_Ubicacion, new { htmlAttributes = new { @class = "form-control", @maxlength = "150" } })
+                        </div>
+                        <div class="col-sm-6">
+                            @Html.LabelFor(model => model.acvo_FechaAdquisicion, htmlAttributes: new { @class = "control-label" })
+                            @Html.ValidationMessageFor(model => model.acvo_FechaAdquisicion, "", new { @class = "text-danger", @Style = "font-size: 14px;" })
+
+                            @Html.EditorFor(model => model.acvo_FechaAdquisicion, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-sm-12">
+                            @Html.LabelFor(model => model.acvo_CostoOriginal, htmlAttributes: new { @class = "control-label" })
+                            @Html.ValidationMessageFor(model => model.acvo_CostoOriginal, "", new { @class = "text-danger", @Style = "font-size: 14px;" })
+
+                            @Html.EditorFor(model => model.acvo_CostoOriginal, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-sm-6 d-flex justify-content-center">
+                            <button type="submit" class="btn btn-primary btn-sm">
+                                <div class="d-flex align-items-center">
+                                    <span class="nav-link-icon">
+                                        <span class="fas fa-pencil-alt"></span>
+                                    </span>
+                                    <span class="nav-link-text ps-1">Editar</span>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="col-sm-6 d-flex justify-content-center">
+                            <a class="btn btn-default btn-sm" href="@Url.Action("Index", "DepreciacionActivos", null)">
+                                <div class="d-flex align-items-center">
+                                    <span class="nav-link-icon">
+                                        <span class="fas fa-arrow-left"></span>
+                                    </span>
+                                    <span class="nav-link-text ps-1">Regresar</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+</div>
+
+

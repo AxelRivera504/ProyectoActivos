@@ -1,0 +1,172 @@
+﻿
+@{
+    ViewBag.Title = "Error500";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index3.html" class="brand-link">
+        <img src="~/Content/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light">Activos</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+                <img src="~/Content/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+            </div>
+            <div class="info">
+                <a href="#" class="d-block"> @Session["FullName"].ToString()</a>
+            </div>
+        </div>
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <!-- Add icons to the links using the .nav-icon class
+                with font-awesome or any other icon font library -->
+                <li class="nav-item">
+                    <a href="@Url.Action("Index", "Home")" class="nav-link">
+                        <i class="nav-icon fas fa-home"></i>
+                        <p>
+                            Inicio
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-business-time"></i>
+                        <p>
+                            Reportes
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index", "Reportes")" class="nav-link ">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Activos por fechas</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("ReporteNoActivos", "Reportes")" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Activos Bajados</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("ReporteActivos", "Reportes")" class="nav-link ">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Activos No Bajados</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-business-time"></i>
+                        <p>
+                            Activos
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index", "DepreciacionActivos")" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Activos</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index", "VidaUtil")" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Vida Util</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-person-booth"></i>
+                        <p>
+                            General
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index", "Clientes")" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Clientes</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-user-alt"></i>
+                        <p>
+                            Acceso
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index", "Usuarios")" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Usuarios</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+</aside>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Inicio</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Inicio</a></li>
+                        <li class="breadcrumb-item">Error 500</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="error-page">
+            <h2 class="headline text-danger">500</h2>
+
+            <div class="error-content">
+                <h3><i class="fas fa-exclamation-triangle text-danger"></i> Oops! Algo salio mal.</h3>
+
+                <p>
+                   Estamos trabajando para solucionalos
+                   Mientras tanto,podrías <a href="@Url.Action("Index", "Home")">regresar al inicio</a> o dirigite a otra pagina
+                </p>
+
+            </div>
+        </div>
+        <!-- /.error-page -->
+
+    </section>
+    <!-- /.content -->
+</div>
+

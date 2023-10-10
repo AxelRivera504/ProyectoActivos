@@ -1,0 +1,213 @@
+﻿<#@ template language="C#" HostSpecific="True" #>
+<#@ output extension=".cshtml" #>
+<#@ include file="Imports.include.t4" #>
+@model IEnumerable<#= "<" + ViewDataTypeName + ">" #>
+<#
+// The following chained if-statement outputs the file header code and markup for a partial view, a view using a layout page, or a regular view.
+if(IsPartialView) {
+#>
+
+<#
+} else if(IsLayoutPageSelected) {
+#>
+
+@{
+    ViewBag.Title = "<#= ViewName#>";
+<#
+if (!String.IsNullOrEmpty(LayoutPageFile)) {
+#>
+    Layout = "<#= LayoutPageFile#>";
+<#
+}
+#>
+}
+
+<#
+} else {
+#>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title><#= ViewName #></title>
+</head>
+<body>
+<#
+    PushIndent("    ");
+}
+#>
+    <div class="container-fluid">
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header pb-0 mb-0">
+                <h3 class="card-title">Listado de <#= ViewName#></h3>
+            </div>
+            <hr/>
+            <div class="card-body pt-0 mt-0">
+            <a class="btn btn-primary" href="@Url.Action("Create", "Controller", null)">
+                <div class="d-flex align-items-center">
+                    <span class="nav-link-icon">
+                        <span class="fas fa-plus"></span>
+                    </span>
+                    <span class="nav-link-text ps-1">Nuevo</span>
+                </div>
+            </a>
+        <br>
+        <br>
+        <div class="table-responsive">
+        <table id="table" class="table table-bordered is-striped" style="width:100%">
+            <thead>
+        <#
+        IEnumerable<PropertyMetadata> properties = ModelMetadata.Properties;
+        foreach (PropertyMetadata property in properties) {
+            if (property.Scaffold && !property.IsPrimaryKey && !property.IsForeignKey) {
+        #>
+        <#
+                // We do not want to show any association properties for which there is
+                // no associated foreign key.
+                if (property.IsAssociation && GetRelatedModelMetadata(property) == null) {
+                    continue;
+                }
+        #>
+                <th>
+                    @Html.DisplayNameFor(model => model.<#= GetValueExpression(property) #>)
+                </th>
+        <#
+            }
+        }
+        #>
+                <th>
+                    Editar
+                </th>
+                <th>
+                    Detalles
+                </th>
+                <th>
+                    Eliminar
+                </th>
+            </thead>
+            <tbody>
+        @foreach (var item in Model) {
+            <tr>
+        <#
+        foreach (PropertyMetadata property in properties) {
+            if (property.Scaffold && !property.IsPrimaryKey && !property.IsForeignKey) {
+        #>
+        <#
+                // We do not want to show any association properties for which there is
+                // no associated foreign key.
+                if (property.IsAssociation && GetRelatedModelMetadata(property) == null) {
+                    continue;
+                }
+        #>
+                <td>
+                    @Html.DisplayFor(modelItem => <#= "item." + GetValueExpression(property) #>)
+                </td>
+        <#
+            }
+        }
+        
+        string pkName = GetPrimaryKeyName();
+        if (pkName != null) {
+        #>
+
+        <td>
+            <a class="btn btn-warning" href="@Url.Action("Edit", "Controller", new { id = item.Cate_Id })">
+                <div class="d-flex align-items-center">
+                    <span class="nav-link-icon">
+                        <span class="fas fa-pencil-alt"></span>
+                    </span>
+                    <span class="nav-link-text ps-1">Editar</span>
+                </div>
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-secondary" href="@Url.Action("Details", "Controller", new { id = item.Cate_Id })">
+                <div class="d-flex align-items-center">
+                    <span class="nav-link-icon">
+                        <span class="far fa-list-alt"></span>
+                    </span>
+                    <span class="nav-link-text ps-1">Detalles</span>
+                </div>
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-danger" href="@Url.Action("Delete", "Controller", new { id = item.Cate_Id })">
+                <div class="d-flex align-items-center">
+                    <span class="nav-link-icon">
+                        <span class="far fa-trash-alt"></span>
+                    </span>
+                    <span class="nav-link-text ps-1">Eliminar</span>
+                </div>
+            </a>
+        </td>
+            
+        <#
+        } else {
+        #>
+        <td>
+            <a class="btn btn-warning" href="@Url.Action("Edit", "Controller", new { id = item.Cate_Id })">
+                <div class="d-flex align-items-center">
+                    <span class="nav-link-icon">
+                        <span class="fas fa-pencil-alt"></span>
+                    </span>
+                    <span class="nav-link-text ps-1">Editar</span>
+                </div>
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-secondary" href="@Url.Action("Details", "Controller", new { id = item.Cate_Id })">
+                <div class="d-flex align-items-center">
+                    <span class="nav-link-icon">
+                        <span class="far fa-list-alt"></span>
+                    </span>
+                    <span class="nav-link-text ps-1">Detalles</span>
+                </div>
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-danger" href="@Url.Action("Delete", "Controller", new { id = item.Cate_Id })">
+                <div class="d-flex align-items-center">
+                    <span class="nav-link-icon">
+                        <span class="far fa-trash-alt"></span>
+                    </span>
+                    <span class="nav-link-text ps-1">Eliminar</span>
+                </div>
+            </a>
+        </td>
+        <#
+        }
+        #>
+            </tr>
+        }
+        </tbody>
+        </table>
+        </div>
+    </div>
+    <!-- /.card-body -->
+</div>
+<!-- /.card -->
+</div>
+
+<!-- DataTable Js-->
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+<#
+// The following code closes the tag used in the case of a view using a layout page and the body and html tags in the case of a regular view page
+#>
+<#
+if(!IsPartialView && !IsLayoutPageSelected) {
+    ClearIndent();
+#>
+</body>
+</html>
+<#
+}
+#>
+<#@ include file="ModelMetadataFunctions.cs.include.t4" #>

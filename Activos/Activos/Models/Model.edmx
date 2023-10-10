@@ -1,0 +1,1025 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ACTIVOSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbUsuarios">
+          <Key>
+            <PropertyRef Name="usua_Id" />
+          </Key>
+          <Property Name="usua_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usua_UsuarioNombre" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="usua_UsuarioApellido" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="usua_Usuario" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="usua_Contra" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="usua_UsuarioCreacion" Type="int" Nullable="false" />
+          <Property Name="usua_FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="usua_Modificacion" Type="int" />
+          <Property Name="usua_FechaModificacion" Type="datetime" />
+          <Property Name="usua_Estado" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbActivos">
+          <Key>
+            <PropertyRef Name="acvo_Id" />
+          </Key>
+          <Property Name="acvo_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="acvo_Nombre" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="acvo_NumeroSerie" Type="nvarchar" MaxLength="20" />
+          <Property Name="viut_Id" Type="int" Nullable="false" />
+          <Property Name="clie_Id" Type="int" Nullable="false" />
+          <Property Name="acvo_Ubicacion" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="acvo_FechaAdquisicion" Type="date" Nullable="false" />
+          <Property Name="acvo_InicioDepreciacion" Type="date" Nullable="false" />
+          <Property Name="acvo_CostoOriginal" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="acvo_ValorResidual" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="acvo_CostoDespreciable" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="usua_UsuarioCreacion" Type="int" Nullable="false" />
+          <Property Name="acvo_FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="usua_Modificacion" Type="int" />
+          <Property Name="acvo_FechaModificacion" Type="datetime" />
+          <Property Name="acvo_Estado" Type="bit" />
+          <Property Name="acvo_FechaBajada" Type="date" />
+        </EntityType>
+        <EntityType Name="tbVidaUtil">
+          <Key>
+            <PropertyRef Name="viut_Id" />
+          </Key>
+          <Property Name="viut_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="viut_Objeto" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="viut_Descripcion" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="viut_VidaUtil" Type="int" Nullable="false" />
+          <Property Name="usua_UsuarioCreacion" Type="int" Nullable="false" />
+          <Property Name="viut_FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="usua_Modificacion" Type="int" />
+          <Property Name="viut_FechaModificacion" Type="datetime" />
+          <Property Name="viut_Estado" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbClientes">
+          <Key>
+            <PropertyRef Name="clie_Id" />
+          </Key>
+          <Property Name="clie_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="clie_CodigoCompania" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="clie_NombreCliente" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="clie_RTNCliente" Type="nvarchar" MaxLength="16" Nullable="false" />
+          <Property Name="clie_Lugar" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="clie_Responsale" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="clie_Telefono" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="usua_UsuarioCreacion" Type="int" Nullable="false" />
+          <Property Name="clie_FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="usua_Modificacion" Type="int" />
+          <Property Name="clie_FechaModificacion" Type="datetime" />
+          <Property Name="clie_Estado" Type="bit" />
+        </EntityType>
+        <Association Name="FK_Acce_tbUsuarios_usua_Modificacion">
+          <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="0..1" />
+          <End Role="tbUsuarios1" Type="Self.tbUsuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUsuarios">
+              <PropertyRef Name="usua_Id" />
+            </Principal>
+            <Dependent Role="tbUsuarios1">
+              <PropertyRef Name="usua_Modificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Acce_tbUsuarios_usua_UsuarioCreacion">
+          <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="1" />
+          <End Role="tbUsuarios1" Type="Self.tbUsuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUsuarios">
+              <PropertyRef Name="usua_Id" />
+            </Principal>
+            <Dependent Role="tbUsuarios1">
+              <PropertyRef Name="usua_UsuarioCreacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Acti_tbActivos_Acti_tbVidaUtil_viut_Id">
+          <End Role="tbVidaUtil" Type="Self.tbVidaUtil" Multiplicity="1" />
+          <End Role="tbActivos" Type="Self.tbActivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbVidaUtil">
+              <PropertyRef Name="viut_Id" />
+            </Principal>
+            <Dependent Role="tbActivos">
+              <PropertyRef Name="viut_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Acti_tbActivos_Gral_tbCliente_clac_Id">
+          <End Role="tbClientes" Type="Self.tbClientes" Multiplicity="1" />
+          <End Role="tbActivos" Type="Self.tbActivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbClientes">
+              <PropertyRef Name="clie_Id" />
+            </Principal>
+            <Dependent Role="tbActivos">
+              <PropertyRef Name="clie_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Acti_tbActivos_usua_Modificacion">
+          <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="0..1" />
+          <End Role="tbActivos" Type="Self.tbActivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUsuarios">
+              <PropertyRef Name="usua_Id" />
+            </Principal>
+            <Dependent Role="tbActivos">
+              <PropertyRef Name="usua_Modificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Acti_tbActivos_usua_UsuarioCreacion">
+          <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="1" />
+          <End Role="tbActivos" Type="Self.tbActivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUsuarios">
+              <PropertyRef Name="usua_Id" />
+            </Principal>
+            <Dependent Role="tbActivos">
+              <PropertyRef Name="usua_UsuarioCreacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Acti_tbVidaUtil_usua_UsuarioCreacion">
+          <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="1" />
+          <End Role="tbVidaUtil" Type="Self.tbVidaUtil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUsuarios">
+              <PropertyRef Name="usua_Id" />
+            </Principal>
+            <Dependent Role="tbVidaUtil">
+              <PropertyRef Name="usua_UsuarioCreacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="UDP_IniciarSesion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acce">
+          <Parameter Name="usua_Usuario" Type="nvarchar" Mode="In" />
+          <Parameter Name="usua_Contra" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="UDP_tbusuarios_CambiarPassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acce">
+          <Parameter Name="usua_Usuario" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="usua_Contra" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="UDP_tbUsuarios_DeshabilitarUsuarios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acce">
+          <Parameter Name="usua_Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UDP_tbusuarios_EditarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acce">
+          <Parameter Name="usua_Id" Type="int" Mode="In" />
+          <Parameter Name="usua_UsuarioNombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="usua_UsuarioApellido" Type="nvarchar" Mode="In" />
+          <Parameter Name="usua_UsuarioModificacion" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UDP_tbUsuarios_HabilitarUsuarios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acce">
+          <Parameter Name="usua_Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UDP_tbusuarios_InsertarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acce">
+          <Parameter Name="usua_UsuarioNombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="usua_UsuarioApellido" Type="nvarchar" Mode="In" />
+          <Parameter Name="usua_Usuario" Type="nvarchar" Mode="In" />
+          <Parameter Name="usua_Contra" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="usua_UsuarioCreacion" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UDP_tbUsuarios_ListarUsuarios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acce" />
+        <Function Name="UDP_tbUsuarios_VerificarUsuarios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acce">
+          <Parameter Name="usua_Usuario" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="UDP_tb_Activos_DarBajaActivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acti">
+          <Parameter Name="acvo_Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UDP_tbActivos_DarDeBajaActivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acti">
+          <Parameter Name="acvo_Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UDP_tbActivos_EditarActivos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acti">
+          <Parameter Name="acvo_Id" Type="int" Mode="In" />
+          <Parameter Name="acvo_Nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="acvo_NumeroSerie" Type="nvarchar" Mode="In" />
+          <Parameter Name="viut_Id" Type="int" Mode="In" />
+          <Parameter Name="clie_Id" Type="int" Mode="In" />
+          <Parameter Name="acvo_Ubicacion" Type="nvarchar" Mode="In" />
+          <Parameter Name="acvo_FechaAdquisicion" Type="date" Mode="In" />
+          <Parameter Name="acvo_CostoOriginal" Type="decimal" Mode="In" />
+          <Parameter Name="usua_Modificacion" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UDP_tbActivos_InsertarActivos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acti">
+          <Parameter Name="acvo_Nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="acvo_NumeroSerie" Type="nvarchar" Mode="In" />
+          <Parameter Name="viut_Id" Type="int" Mode="In" />
+          <Parameter Name="clie_Id" Type="int" Mode="In" />
+          <Parameter Name="acvo_Ubicacion" Type="nvarchar" Mode="In" />
+          <Parameter Name="acvo_FechaAdquisicion" Type="date" Mode="In" />
+          <Parameter Name="acvo_CostoOriginal" Type="decimal" Mode="In" />
+          <Parameter Name="usua_UsuarioCreacion" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UDP_tbActivos_ListarActivos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acti" />
+        <Function Name="UDP_tbActivos_ReporteFechas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acti">
+          <Parameter Name="clie_Id" Type="int" Mode="In" />
+          <Parameter Name="FechaInicio" Type="date" Mode="In" />
+          <Parameter Name="FechaFin" Type="date" Mode="In" />
+        </Function>
+        <Function Name="UDP_tbActivos_VerificarActivosCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acti">
+          <Parameter Name="clie_Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UDP_tbActivos_VerificarActivosNoDadosBajaCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acti">
+          <Parameter Name="clie_Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UDP_tbActivos_VerificarActivosTotalesCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acti">
+          <Parameter Name="clie_Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UDP_tbClientes_CantidadDeClientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acti" />
+        <Function Name="UDP_tbClientes_ClienteConActivosBajados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acti" />
+        <Function Name="UDP_tbClientes_ClienteConActivosNoBajados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acti" />
+        <Function Name="UDP_tbVidaUtil_Editar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acti">
+          <Parameter Name="viut_Id" Type="int" Mode="In" />
+          <Parameter Name="viut_Objeto" Type="nvarchar" Mode="In" />
+          <Parameter Name="viut_Descripcion" Type="nvarchar" Mode="In" />
+          <Parameter Name="viut_VidaUtil" Type="int" Mode="In" />
+          <Parameter Name="usuarioModificacion" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UDP_tbVidaUtil_Insertar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acti">
+          <Parameter Name="viut_Objeto" Type="nvarchar" Mode="In" />
+          <Parameter Name="viut_Descripcion" Type="nvarchar" Mode="In" />
+          <Parameter Name="viut_VidaUtil" Type="int" Mode="In" />
+          <Parameter Name="usuarioCreacion" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UDP_tbVidaUtil_ListarVidaUtil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acti" />
+        <Function Name="UDP_tbVidaUtil_VidaUtilMasUsadas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acti" />
+        <Function Name="GenerarReportePorCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="clie_Id" Type="int" Mode="In" />
+          <Parameter Name="acvo_Estado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="UDP_tbClientes_EditarClientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Gral">
+          <Parameter Name="clie_Id" Type="int" Mode="In" />
+          <Parameter Name="clie_CodigoCompania" Type="nvarchar" Mode="In" />
+          <Parameter Name="clie_NombreCliente" Type="nvarchar" Mode="In" />
+          <Parameter Name="clie_RTNCliente" Type="nvarchar" Mode="In" />
+          <Parameter Name="clie_Lugar" Type="nvarchar" Mode="In" />
+          <Parameter Name="clie_Responsale" Type="nvarchar" Mode="In" />
+          <Parameter Name="clie_Telefono" Type="nvarchar" Mode="In" />
+          <Parameter Name="usua_Modificacion" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UDP_tbClientes_InsertarClientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Gral">
+          <Parameter Name="clie_CodigoCompania" Type="nvarchar" Mode="In" />
+          <Parameter Name="clie_NombreCliente" Type="nvarchar" Mode="In" />
+          <Parameter Name="clie_RTNCliente" Type="nvarchar" Mode="In" />
+          <Parameter Name="clie_Lugar" Type="nvarchar" Mode="In" />
+          <Parameter Name="clie_Responsale" Type="nvarchar" Mode="In" />
+          <Parameter Name="clie_Telefono" Type="nvarchar" Mode="In" />
+          <Parameter Name="usua_UsuarioCreacion" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UDP_tbClientes_ListarClientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Gral" />
+        <Function Name="UDP_tbClientes_ValidarRTN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Gral">
+          <Parameter Name="clie_RTNCliente" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="ACTIVOSModelStoreContainer">
+          <EntitySet Name="tbUsuarios" EntityType="Self.tbUsuarios" Schema="Acce" store:Type="Tables" />
+          <EntitySet Name="tbActivos" EntityType="Self.tbActivos" Schema="Acti" store:Type="Tables" />
+          <EntitySet Name="tbVidaUtil" EntityType="Self.tbVidaUtil" Schema="Acti" store:Type="Tables" />
+          <EntitySet Name="tbClientes" EntityType="Self.tbClientes" Schema="Gral" store:Type="Tables" />
+          <AssociationSet Name="FK_Acce_tbUsuarios_usua_Modificacion" Association="Self.FK_Acce_tbUsuarios_usua_Modificacion">
+            <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+            <End Role="tbUsuarios1" EntitySet="tbUsuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Acce_tbUsuarios_usua_UsuarioCreacion" Association="Self.FK_Acce_tbUsuarios_usua_UsuarioCreacion">
+            <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+            <End Role="tbUsuarios1" EntitySet="tbUsuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Acti_tbActivos_Acti_tbVidaUtil_viut_Id" Association="Self.FK_Acti_tbActivos_Acti_tbVidaUtil_viut_Id">
+            <End Role="tbVidaUtil" EntitySet="tbVidaUtil" />
+            <End Role="tbActivos" EntitySet="tbActivos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Acti_tbActivos_Gral_tbCliente_clac_Id" Association="Self.FK_Acti_tbActivos_Gral_tbCliente_clac_Id">
+            <End Role="tbClientes" EntitySet="tbClientes" />
+            <End Role="tbActivos" EntitySet="tbActivos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Acti_tbActivos_usua_Modificacion" Association="Self.FK_Acti_tbActivos_usua_Modificacion">
+            <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+            <End Role="tbActivos" EntitySet="tbActivos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Acti_tbActivos_usua_UsuarioCreacion" Association="Self.FK_Acti_tbActivos_usua_UsuarioCreacion">
+            <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+            <End Role="tbActivos" EntitySet="tbActivos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Acti_tbVidaUtil_usua_UsuarioCreacion" Association="Self.FK_Acti_tbVidaUtil_usua_UsuarioCreacion">
+            <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+            <End Role="tbVidaUtil" EntitySet="tbVidaUtil" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ACTIVOSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbUsuarios">
+          <Key>
+            <PropertyRef Name="usua_Id" />
+          </Key>
+          <Property Name="usua_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usua_UsuarioNombre" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="usua_UsuarioApellido" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="usua_Usuario" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="usua_Contra" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="usua_UsuarioCreacion" Type="Int32" Nullable="false" />
+          <Property Name="usua_FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="usua_Modificacion" Type="Int32" />
+          <Property Name="usua_FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="usua_Estado" Type="Boolean" />
+          <NavigationProperty Name="tbUsuarios1" Relationship="Self.FK_Acce_tbUsuarios_usua_Modificacion" FromRole="tbUsuarios" ToRole="tbUsuarios1" />
+          <NavigationProperty Name="tbUsuarios2" Relationship="Self.FK_Acce_tbUsuarios_usua_Modificacion" FromRole="tbUsuarios1" ToRole="tbUsuarios" />
+          <NavigationProperty Name="tbUsuarios11" Relationship="Self.FK_Acce_tbUsuarios_usua_UsuarioCreacion" FromRole="tbUsuarios" ToRole="tbUsuarios1" />
+          <NavigationProperty Name="tbUsuarios3" Relationship="Self.FK_Acce_tbUsuarios_usua_UsuarioCreacion" FromRole="tbUsuarios1" ToRole="tbUsuarios" />
+          <NavigationProperty Name="tbActivos" Relationship="Self.FK_Acti_tbActivos_usua_Modificacion" FromRole="tbUsuarios" ToRole="tbActivos" />
+          <NavigationProperty Name="tbActivos1" Relationship="Self.FK_Acti_tbActivos_usua_UsuarioCreacion" FromRole="tbUsuarios" ToRole="tbActivos" />
+          <NavigationProperty Name="tbVidaUtil" Relationship="Self.FK_Acti_tbVidaUtil_usua_UsuarioCreacion" FromRole="tbUsuarios" ToRole="tbVidaUtil" />
+        </EntityType>
+        <EntityType Name="tbActivos">
+          <Key>
+            <PropertyRef Name="acvo_Id" />
+          </Key>
+          <Property Name="acvo_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="acvo_Nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="acvo_NumeroSerie" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="viut_Id" Type="Int32" Nullable="false" />
+          <Property Name="clie_Id" Type="Int32" Nullable="false" />
+          <Property Name="acvo_Ubicacion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="acvo_FechaAdquisicion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="acvo_InicioDepreciacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="acvo_CostoOriginal" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="acvo_ValorResidual" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="acvo_CostoDespreciable" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="usua_UsuarioCreacion" Type="Int32" Nullable="false" />
+          <Property Name="acvo_FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="usua_Modificacion" Type="Int32" />
+          <Property Name="acvo_FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="acvo_Estado" Type="Boolean" />
+          <Property Name="acvo_FechaBajada" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="tbUsuarios" Relationship="Self.FK_Acti_tbActivos_usua_Modificacion" FromRole="tbActivos" ToRole="tbUsuarios" />
+          <NavigationProperty Name="tbUsuarios1" Relationship="Self.FK_Acti_tbActivos_usua_UsuarioCreacion" FromRole="tbActivos" ToRole="tbUsuarios" />
+          <NavigationProperty Name="tbVidaUtil" Relationship="Self.FK_Acti_tbActivos_Acti_tbVidaUtil_viut_Id" FromRole="tbActivos" ToRole="tbVidaUtil" />
+          <NavigationProperty Name="tbClientes" Relationship="Self.FK_Acti_tbActivos_Gral_tbCliente_clac_Id" FromRole="tbActivos" ToRole="tbClientes" />
+        </EntityType>
+        <EntityType Name="tbVidaUtil">
+          <Key>
+            <PropertyRef Name="viut_Id" />
+          </Key>
+          <Property Name="viut_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="viut_Objeto" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="viut_Descripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="viut_VidaUtil" Type="Int32" Nullable="false" />
+          <Property Name="usua_UsuarioCreacion" Type="Int32" Nullable="false" />
+          <Property Name="viut_FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="usua_Modificacion" Type="Int32" />
+          <Property Name="viut_FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="viut_Estado" Type="Boolean" />
+          <NavigationProperty Name="tbUsuarios" Relationship="Self.FK_Acti_tbVidaUtil_usua_UsuarioCreacion" FromRole="tbVidaUtil" ToRole="tbUsuarios" />
+          <NavigationProperty Name="tbActivos" Relationship="Self.FK_Acti_tbActivos_Acti_tbVidaUtil_viut_Id" FromRole="tbVidaUtil" ToRole="tbActivos" />
+        </EntityType>
+        <EntityType Name="tbClientes">
+          <Key>
+            <PropertyRef Name="clie_Id" />
+          </Key>
+          <Property Name="clie_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="clie_CodigoCompania" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="clie_NombreCliente" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="clie_RTNCliente" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="clie_Lugar" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="clie_Responsale" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="clie_Telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="usua_UsuarioCreacion" Type="Int32" Nullable="false" />
+          <Property Name="clie_FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="usua_Modificacion" Type="Int32" />
+          <Property Name="clie_FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="clie_Estado" Type="Boolean" />
+          <NavigationProperty Name="tbActivos" Relationship="Self.FK_Acti_tbActivos_Gral_tbCliente_clac_Id" FromRole="tbClientes" ToRole="tbActivos" />
+        </EntityType>
+        <Association Name="FK_Acce_tbUsuarios_usua_Modificacion">
+          <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="0..1" />
+          <End Role="tbUsuarios1" Type="Self.tbUsuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUsuarios">
+              <PropertyRef Name="usua_Id" />
+            </Principal>
+            <Dependent Role="tbUsuarios1">
+              <PropertyRef Name="usua_Modificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Acce_tbUsuarios_usua_UsuarioCreacion">
+          <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="1" />
+          <End Role="tbUsuarios1" Type="Self.tbUsuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUsuarios">
+              <PropertyRef Name="usua_Id" />
+            </Principal>
+            <Dependent Role="tbUsuarios1">
+              <PropertyRef Name="usua_UsuarioCreacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Acti_tbActivos_usua_Modificacion">
+          <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="0..1" />
+          <End Role="tbActivos" Type="Self.tbActivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUsuarios">
+              <PropertyRef Name="usua_Id" />
+            </Principal>
+            <Dependent Role="tbActivos">
+              <PropertyRef Name="usua_Modificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Acti_tbActivos_usua_UsuarioCreacion">
+          <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="1" />
+          <End Role="tbActivos" Type="Self.tbActivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUsuarios">
+              <PropertyRef Name="usua_Id" />
+            </Principal>
+            <Dependent Role="tbActivos">
+              <PropertyRef Name="usua_UsuarioCreacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Acti_tbVidaUtil_usua_UsuarioCreacion">
+          <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="1" />
+          <End Role="tbVidaUtil" Type="Self.tbVidaUtil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUsuarios">
+              <PropertyRef Name="usua_Id" />
+            </Principal>
+            <Dependent Role="tbVidaUtil">
+              <PropertyRef Name="usua_UsuarioCreacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Acti_tbActivos_Acti_tbVidaUtil_viut_Id">
+          <End Role="tbVidaUtil" Type="Self.tbVidaUtil" Multiplicity="1" />
+          <End Role="tbActivos" Type="Self.tbActivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbVidaUtil">
+              <PropertyRef Name="viut_Id" />
+            </Principal>
+            <Dependent Role="tbActivos">
+              <PropertyRef Name="viut_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Acti_tbActivos_Gral_tbCliente_clac_Id">
+          <End Role="tbClientes" Type="Self.tbClientes" Multiplicity="1" />
+          <End Role="tbActivos" Type="Self.tbActivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbClientes">
+              <PropertyRef Name="clie_Id" />
+            </Principal>
+            <Dependent Role="tbActivos">
+              <PropertyRef Name="clie_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ACTIVOSEntities16" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbUsuarios" EntityType="Self.tbUsuarios" />
+          <EntitySet Name="tbActivos" EntityType="Self.tbActivos" />
+          <EntitySet Name="tbVidaUtil" EntityType="Self.tbVidaUtil" />
+          <EntitySet Name="tbClientes" EntityType="Self.tbClientes" />
+          <AssociationSet Name="FK_Acce_tbUsuarios_usua_Modificacion" Association="Self.FK_Acce_tbUsuarios_usua_Modificacion">
+            <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+            <End Role="tbUsuarios1" EntitySet="tbUsuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Acce_tbUsuarios_usua_UsuarioCreacion" Association="Self.FK_Acce_tbUsuarios_usua_UsuarioCreacion">
+            <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+            <End Role="tbUsuarios1" EntitySet="tbUsuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Acti_tbActivos_usua_Modificacion" Association="Self.FK_Acti_tbActivos_usua_Modificacion">
+            <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+            <End Role="tbActivos" EntitySet="tbActivos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Acti_tbActivos_usua_UsuarioCreacion" Association="Self.FK_Acti_tbActivos_usua_UsuarioCreacion">
+            <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+            <End Role="tbActivos" EntitySet="tbActivos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Acti_tbVidaUtil_usua_UsuarioCreacion" Association="Self.FK_Acti_tbVidaUtil_usua_UsuarioCreacion">
+            <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+            <End Role="tbVidaUtil" EntitySet="tbVidaUtil" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Acti_tbActivos_Acti_tbVidaUtil_viut_Id" Association="Self.FK_Acti_tbActivos_Acti_tbVidaUtil_viut_Id">
+            <End Role="tbVidaUtil" EntitySet="tbVidaUtil" />
+            <End Role="tbActivos" EntitySet="tbActivos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Acti_tbActivos_Gral_tbCliente_clac_Id" Association="Self.FK_Acti_tbActivos_Gral_tbCliente_clac_Id">
+            <End Role="tbClientes" EntitySet="tbClientes" />
+            <End Role="tbActivos" EntitySet="tbActivos" />
+          </AssociationSet>
+          <FunctionImport Name="UDP_IniciarSesion" ReturnType="Collection(ACTIVOSModel.UDP_IniciarSesion_Result)">
+            <Parameter Name="usua_Usuario" Mode="In" Type="String" />
+            <Parameter Name="usua_Contra" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UDP_tbusuarios_CambiarPassword" ReturnType="Collection(Int32)">
+            <Parameter Name="usua_Usuario" Mode="In" Type="String" />
+            <Parameter Name="usua_Contra" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UDP_tbUsuarios_DeshabilitarUsuarios" ReturnType="Collection(Int32)">
+            <Parameter Name="usua_Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UDP_tbusuarios_EditarUsuario" ReturnType="Collection(Int32)">
+            <Parameter Name="usua_Id" Mode="In" Type="Int32" />
+            <Parameter Name="usua_UsuarioNombre" Mode="In" Type="String" />
+            <Parameter Name="usua_UsuarioApellido" Mode="In" Type="String" />
+            <Parameter Name="usua_UsuarioModificacion" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UDP_tbUsuarios_HabilitarUsuarios" ReturnType="Collection(Int32)">
+            <Parameter Name="usua_Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UDP_tbusuarios_InsertarUsuario" ReturnType="Collection(Int32)">
+            <Parameter Name="usua_UsuarioNombre" Mode="In" Type="String" />
+            <Parameter Name="usua_UsuarioApellido" Mode="In" Type="String" />
+            <Parameter Name="usua_Usuario" Mode="In" Type="String" />
+            <Parameter Name="usua_Contra" Mode="In" Type="String" />
+            <Parameter Name="usua_UsuarioCreacion" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UDP_tbUsuarios_ListarUsuarios" ReturnType="Collection(ACTIVOSModel.UDP_tbUsuarios_ListarUsuarios_Result)" />
+          <FunctionImport Name="UDP_tbUsuarios_VerificarUsuarios" ReturnType="Collection(Int32)">
+            <Parameter Name="usua_Usuario" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UDP_tb_Activos_DarBajaActivo" ReturnType="Collection(Int32)">
+            <Parameter Name="acvo_Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UDP_tbActivos_DarDeBajaActivo" ReturnType="Collection(Int32)">
+            <Parameter Name="acvo_Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UDP_tbActivos_EditarActivos" ReturnType="Collection(Int32)">
+            <Parameter Name="acvo_Id" Mode="In" Type="Int32" />
+            <Parameter Name="acvo_Nombre" Mode="In" Type="String" />
+            <Parameter Name="acvo_NumeroSerie" Mode="In" Type="String" />
+            <Parameter Name="viut_Id" Mode="In" Type="Int32" />
+            <Parameter Name="clie_Id" Mode="In" Type="Int32" />
+            <Parameter Name="acvo_Ubicacion" Mode="In" Type="String" />
+            <Parameter Name="acvo_FechaAdquisicion" Mode="In" Type="DateTime" />
+            <Parameter Name="acvo_CostoOriginal" Mode="In" Type="Decimal" />
+            <Parameter Name="usua_Modificacion" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UDP_tbActivos_InsertarActivos" ReturnType="Collection(Int32)">
+            <Parameter Name="acvo_Nombre" Mode="In" Type="String" />
+            <Parameter Name="acvo_NumeroSerie" Mode="In" Type="String" />
+            <Parameter Name="viut_Id" Mode="In" Type="Int32" />
+            <Parameter Name="clie_Id" Mode="In" Type="Int32" />
+            <Parameter Name="acvo_Ubicacion" Mode="In" Type="String" />
+            <Parameter Name="acvo_FechaAdquisicion" Mode="In" Type="DateTime" />
+            <Parameter Name="acvo_CostoOriginal" Mode="In" Type="Decimal" />
+            <Parameter Name="usua_UsuarioCreacion" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UDP_tbActivos_ListarActivos" ReturnType="Collection(ACTIVOSModel.UDP_tbActivos_ListarActivos_Result)" />
+          <FunctionImport Name="UDP_tbActivos_ReporteFechas" ReturnType="Collection(ACTIVOSModel.UDP_tbActivos_ReporteFechas_Result)">
+            <Parameter Name="clie_Id" Mode="In" Type="Int32" />
+            <Parameter Name="FechaInicio" Mode="In" Type="DateTime" />
+            <Parameter Name="FechaFin" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="UDP_tbActivos_VerificarActivosCliente" ReturnType="Collection(Int32)">
+            <Parameter Name="clie_Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UDP_tbActivos_VerificarActivosNoDadosBajaCliente" ReturnType="Collection(Int32)">
+            <Parameter Name="clie_Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UDP_tbActivos_VerificarActivosTotalesCliente" ReturnType="Collection(Int32)">
+            <Parameter Name="clie_Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UDP_tbClientes_CantidadDeClientes" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="UDP_tbClientes_ClienteConActivosBajados" ReturnType="Collection(ACTIVOSModel.UDP_tbClientes_ClienteConActivosBajados_Result)" />
+          <FunctionImport Name="UDP_tbClientes_ClienteConActivosNoBajados" ReturnType="Collection(ACTIVOSModel.UDP_tbClientes_ClienteConActivosNoBajados_Result)" />
+          <FunctionImport Name="UDP_tbVidaUtil_Editar" ReturnType="Collection(Int32)">
+            <Parameter Name="viut_Id" Mode="In" Type="Int32" />
+            <Parameter Name="viut_Objeto" Mode="In" Type="String" />
+            <Parameter Name="viut_Descripcion" Mode="In" Type="String" />
+            <Parameter Name="viut_VidaUtil" Mode="In" Type="Int32" />
+            <Parameter Name="usuarioModificacion" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UDP_tbVidaUtil_Insertar" ReturnType="Collection(Int32)">
+            <Parameter Name="viut_Objeto" Mode="In" Type="String" />
+            <Parameter Name="viut_Descripcion" Mode="In" Type="String" />
+            <Parameter Name="viut_VidaUtil" Mode="In" Type="Int32" />
+            <Parameter Name="usuarioCreacion" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UDP_tbVidaUtil_ListarVidaUtil" ReturnType="Collection(ACTIVOSModel.UDP_tbVidaUtil_ListarVidaUtil_Result)" />
+          <FunctionImport Name="UDP_tbVidaUtil_VidaUtilMasUsadas" ReturnType="Collection(ACTIVOSModel.UDP_tbVidaUtil_VidaUtilMasUsadas_Result)" />
+          <FunctionImport Name="GenerarReportePorCliente" ReturnType="Collection(ACTIVOSModel.GenerarReportePorCliente_Result)">
+            <Parameter Name="clie_Id" Mode="In" Type="Int32" />
+            <Parameter Name="acvo_Estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="UDP_tbClientes_EditarClientes" ReturnType="Collection(Int32)">
+            <Parameter Name="clie_Id" Mode="In" Type="Int32" />
+            <Parameter Name="clie_CodigoCompania" Mode="In" Type="String" />
+            <Parameter Name="clie_NombreCliente" Mode="In" Type="String" />
+            <Parameter Name="clie_RTNCliente" Mode="In" Type="String" />
+            <Parameter Name="clie_Lugar" Mode="In" Type="String" />
+            <Parameter Name="clie_Responsale" Mode="In" Type="String" />
+            <Parameter Name="clie_Telefono" Mode="In" Type="String" />
+            <Parameter Name="usua_Modificacion" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UDP_tbClientes_InsertarClientes" ReturnType="Collection(Int32)">
+            <Parameter Name="clie_CodigoCompania" Mode="In" Type="String" />
+            <Parameter Name="clie_NombreCliente" Mode="In" Type="String" />
+            <Parameter Name="clie_RTNCliente" Mode="In" Type="String" />
+            <Parameter Name="clie_Lugar" Mode="In" Type="String" />
+            <Parameter Name="clie_Responsale" Mode="In" Type="String" />
+            <Parameter Name="clie_Telefono" Mode="In" Type="String" />
+            <Parameter Name="usua_UsuarioCreacion" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UDP_tbClientes_ListarClientes" ReturnType="Collection(ACTIVOSModel.UDP_tbClientes_ListarClientes_Result)" />
+          <FunctionImport Name="UDP_tbClientes_ValidarRTN" ReturnType="Collection(Int32)">
+            <Parameter Name="clie_RTNCliente" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="UDP_IniciarSesion_Result">
+          <Property Type="Int32" Name="usua_Id" Nullable="false" />
+          <Property Type="String" Name="usua_UsuarioNombre" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="usua_UsuarioApellido" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="usua_Usuario" Nullable="false" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="UDP_tbUsuarios_ListarUsuarios_Result">
+          <Property Type="Int32" Name="usua_Id" Nullable="false" />
+          <Property Type="String" Name="usua_UsuarioNombre" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="usua_UsuarioApellido" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="usua_Usuario" Nullable="false" MaxLength="200" />
+          <Property Type="Int32" Name="usua_UsuarioCreacion" Nullable="false" />
+          <Property Type="DateTime" Name="usua_FechaCreacion" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="usua_Modificacion" Nullable="true" />
+          <Property Type="DateTime" Name="usua_FechaModificacion" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="usua_Estado" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UDP_tbActivos_ListarActivos_Result">
+          <Property Type="Int32" Name="acvo_Id" Nullable="false" />
+          <Property Type="String" Name="acvo_Nombre" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="acvo_NumeroSerie" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="viut_Id" Nullable="false" />
+          <Property Type="Int32" Name="viut_VidaUtil" Nullable="false" />
+          <Property Type="Int32" Name="clie_Id" Nullable="false" />
+          <Property Type="String" Name="clie_NombreCliente" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="clie_CodigoCompania" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="acvo_Ubicacion" Nullable="false" MaxLength="150" />
+          <Property Type="DateTime" Name="acvo_FechaAdquisicion" Nullable="false" />
+          <Property Type="DateTime" Name="acvo_InicioDepreciacion" Nullable="false" />
+          <Property Type="Decimal" Name="acvo_CostoOriginal" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="acvo_ValorResidual" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="acvo_CostoDespreciable" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Boolean" Name="acvo_Estado" Nullable="true" />
+          <Property Type="DateTime" Name="acvo_FechaCreacion" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="acvo_FechaModificacion" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="UDP_tbActivos_ReporteFechas_Result">
+          <Property Type="String" Name="acvo_Nombre" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="acvo_NumeroSerie" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="viut_Objeto" Nullable="false" MaxLength="6" />
+          <Property Type="Int32" Name="viut_VidaUtil" Nullable="false" />
+          <Property Type="String" Name="acvo_Ubicacion" Nullable="false" MaxLength="150" />
+          <Property Type="DateTime" Name="acvo_FechaAdquisicion" Nullable="false" />
+          <Property Type="DateTime" Name="acvo_InicioDepreciacion" Nullable="false" />
+          <Property Type="Decimal" Name="acvo_CostoOriginal" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="acvo_ValorResidual" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="DateTime" Name="acvo_FechaCreacion" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="acvo_CostoDespreciable" Nullable="false" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="UDP_tbClientes_ClienteConActivosBajados_Result">
+          <Property Type="String" Name="clie_NombreCliente" Nullable="false" MaxLength="14" />
+          <Property Type="String" Name="clie_CodigoCompania" Nullable="false" MaxLength="3" />
+          <Property Type="Int32" Name="TotalActivos" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="UDP_tbClientes_ClienteConActivosNoBajados_Result">
+          <Property Type="String" Name="clie_NombreCliente" Nullable="false" MaxLength="14" />
+          <Property Type="String" Name="clie_CodigoCompania" Nullable="false" MaxLength="3" />
+          <Property Type="Int32" Name="TotalActivos" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="UDP_tbVidaUtil_ListarVidaUtil_Result">
+          <Property Type="Int32" Name="viut_Id" Nullable="false" />
+          <Property Type="String" Name="viut_Objeto" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="viut_Descripcion" Nullable="false" MaxLength="150" />
+          <Property Type="Int32" Name="viut_VidaUtil" Nullable="false" />
+          <Property Type="Boolean" Name="viut_Estado" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UDP_tbVidaUtil_VidaUtilMasUsadas_Result">
+          <Property Type="String" Name="viut_Objeto" Nullable="false" MaxLength="6" />
+          <Property Type="Int32" Name="viut_VidaUtil" Nullable="false" />
+          <Property Type="String" Name="viut_Descripcion" Nullable="false" MaxLength="150" />
+          <Property Type="Int32" Name="CantidadUsadas" Nullable="true" />
+          <Property Type="String" Name="Porcentaje" Nullable="false" MaxLength="42" />
+        </ComplexType>
+        <ComplexType Name="GenerarReportePorCliente_Result">
+          <Property Type="String" Name="acvo_Nombre" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="viut_Descripcion" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Ubicacion" Nullable="false" MaxLength="173" />
+          <Property Type="DateTime" Name="acvo_FechaAdquisicion" Nullable="false" />
+          <Property Type="DateTime" Name="acvo_InicioDepreciacion" Nullable="false" />
+          <Property Type="Decimal" Name="acvo_CostoOriginal" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="viut_VidaUtil" Nullable="true" />
+          <Property Type="Decimal" Name="acvo_ValorResidual" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="acvo_CostoDespreciable" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="String" Name="PeriodoMeses" Nullable="false" MaxLength="36" />
+          <Property Type="String" Name="TasaMensual" Nullable="false" MaxLength="31" />
+          <Property Type="Int32" Name="PeriodoA" Nullable="false" />
+          <Property Type="String" Name="TasaAnual" Nullable="false" MaxLength="31" />
+          <Property Type="Decimal" Name="DepPeriodoMeses" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="DepEnero" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="DepFebrero" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="DepMarzo" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="DepAbril" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="DepMayo" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="DepJunio" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="DepJulio" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="DepAgosto" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="DepSeptiembre" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="DepOctubre" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="DepNoviembre" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="DepDiciembre" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="DelPeriodo" Nullable="true" Precision="21" Scale="2" />
+          <Property Type="Decimal" Name="ACUMULADA" Nullable="true" Precision="34" Scale="4" />
+          <Property Type="Decimal" Name="ValorLibro" Nullable="true" Precision="35" Scale="4" />
+        </ComplexType>
+        <ComplexType Name="UDP_tbClientes_ListarClientes_Result">
+          <Property Type="Int32" Name="clie_Id" Nullable="false" />
+          <Property Type="String" Name="clie_CodigoCompania" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="clie_NombreCliente" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="clie_Responsale" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="clie_RTNCliente" Nullable="false" MaxLength="16" />
+          <Property Type="String" Name="clie_Lugar" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="clie_Telefono" Nullable="false" MaxLength="15" />
+          <Property Type="DateTime" Name="clie_FechaCreacion" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="clie_FechaModificacion" Nullable="true" Precision="23" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ACTIVOSModelStoreContainer" CdmEntityContainer="ACTIVOSEntities16">
+          <EntitySetMapping Name="tbUsuarios">
+            <EntityTypeMapping TypeName="ACTIVOSModel.tbUsuarios">
+              <MappingFragment StoreEntitySet="tbUsuarios">
+                <ScalarProperty Name="usua_Id" ColumnName="usua_Id" />
+                <ScalarProperty Name="usua_UsuarioNombre" ColumnName="usua_UsuarioNombre" />
+                <ScalarProperty Name="usua_UsuarioApellido" ColumnName="usua_UsuarioApellido" />
+                <ScalarProperty Name="usua_Usuario" ColumnName="usua_Usuario" />
+                <ScalarProperty Name="usua_Contra" ColumnName="usua_Contra" />
+                <ScalarProperty Name="usua_UsuarioCreacion" ColumnName="usua_UsuarioCreacion" />
+                <ScalarProperty Name="usua_FechaCreacion" ColumnName="usua_FechaCreacion" />
+                <ScalarProperty Name="usua_Modificacion" ColumnName="usua_Modificacion" />
+                <ScalarProperty Name="usua_FechaModificacion" ColumnName="usua_FechaModificacion" />
+                <ScalarProperty Name="usua_Estado" ColumnName="usua_Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbActivos">
+            <EntityTypeMapping TypeName="ACTIVOSModel.tbActivos">
+              <MappingFragment StoreEntitySet="tbActivos">
+                <ScalarProperty Name="acvo_Id" ColumnName="acvo_Id" />
+                <ScalarProperty Name="acvo_Nombre" ColumnName="acvo_Nombre" />
+                <ScalarProperty Name="acvo_NumeroSerie" ColumnName="acvo_NumeroSerie" />
+                <ScalarProperty Name="viut_Id" ColumnName="viut_Id" />
+                <ScalarProperty Name="clie_Id" ColumnName="clie_Id" />
+                <ScalarProperty Name="acvo_Ubicacion" ColumnName="acvo_Ubicacion" />
+                <ScalarProperty Name="acvo_FechaAdquisicion" ColumnName="acvo_FechaAdquisicion" />
+                <ScalarProperty Name="acvo_InicioDepreciacion" ColumnName="acvo_InicioDepreciacion" />
+                <ScalarProperty Name="acvo_CostoOriginal" ColumnName="acvo_CostoOriginal" />
+                <ScalarProperty Name="acvo_ValorResidual" ColumnName="acvo_ValorResidual" />
+                <ScalarProperty Name="acvo_CostoDespreciable" ColumnName="acvo_CostoDespreciable" />
+                <ScalarProperty Name="usua_UsuarioCreacion" ColumnName="usua_UsuarioCreacion" />
+                <ScalarProperty Name="acvo_FechaCreacion" ColumnName="acvo_FechaCreacion" />
+                <ScalarProperty Name="usua_Modificacion" ColumnName="usua_Modificacion" />
+                <ScalarProperty Name="acvo_FechaModificacion" ColumnName="acvo_FechaModificacion" />
+                <ScalarProperty Name="acvo_Estado" ColumnName="acvo_Estado" />
+                <ScalarProperty Name="acvo_FechaBajada" ColumnName="acvo_FechaBajada" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbVidaUtil">
+            <EntityTypeMapping TypeName="ACTIVOSModel.tbVidaUtil">
+              <MappingFragment StoreEntitySet="tbVidaUtil">
+                <ScalarProperty Name="viut_Id" ColumnName="viut_Id" />
+                <ScalarProperty Name="viut_Objeto" ColumnName="viut_Objeto" />
+                <ScalarProperty Name="viut_Descripcion" ColumnName="viut_Descripcion" />
+                <ScalarProperty Name="viut_VidaUtil" ColumnName="viut_VidaUtil" />
+                <ScalarProperty Name="usua_UsuarioCreacion" ColumnName="usua_UsuarioCreacion" />
+                <ScalarProperty Name="viut_FechaCreacion" ColumnName="viut_FechaCreacion" />
+                <ScalarProperty Name="usua_Modificacion" ColumnName="usua_Modificacion" />
+                <ScalarProperty Name="viut_FechaModificacion" ColumnName="viut_FechaModificacion" />
+                <ScalarProperty Name="viut_Estado" ColumnName="viut_Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbClientes">
+            <EntityTypeMapping TypeName="ACTIVOSModel.tbClientes">
+              <MappingFragment StoreEntitySet="tbClientes">
+                <ScalarProperty Name="clie_Id" ColumnName="clie_Id" />
+                <ScalarProperty Name="clie_CodigoCompania" ColumnName="clie_CodigoCompania" />
+                <ScalarProperty Name="clie_NombreCliente" ColumnName="clie_NombreCliente" />
+                <ScalarProperty Name="clie_RTNCliente" ColumnName="clie_RTNCliente" />
+                <ScalarProperty Name="clie_Lugar" ColumnName="clie_Lugar" />
+                <ScalarProperty Name="clie_Responsale" ColumnName="clie_Responsale" />
+                <ScalarProperty Name="clie_Telefono" ColumnName="clie_Telefono" />
+                <ScalarProperty Name="usua_UsuarioCreacion" ColumnName="usua_UsuarioCreacion" />
+                <ScalarProperty Name="clie_FechaCreacion" ColumnName="clie_FechaCreacion" />
+                <ScalarProperty Name="usua_Modificacion" ColumnName="usua_Modificacion" />
+                <ScalarProperty Name="clie_FechaModificacion" ColumnName="clie_FechaModificacion" />
+                <ScalarProperty Name="clie_Estado" ColumnName="clie_Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="UDP_IniciarSesion" FunctionName="ACTIVOSModel.Store.UDP_IniciarSesion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ACTIVOSModel.UDP_IniciarSesion_Result">
+                <ScalarProperty Name="usua_Id" ColumnName="usua_Id" />
+                <ScalarProperty Name="usua_UsuarioNombre" ColumnName="usua_UsuarioNombre" />
+                <ScalarProperty Name="usua_UsuarioApellido" ColumnName="usua_UsuarioApellido" />
+                <ScalarProperty Name="usua_Usuario" ColumnName="usua_Usuario" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UDP_tbusuarios_CambiarPassword" FunctionName="ACTIVOSModel.Store.UDP_tbusuarios_CambiarPassword" />
+          <FunctionImportMapping FunctionImportName="UDP_tbUsuarios_DeshabilitarUsuarios" FunctionName="ACTIVOSModel.Store.UDP_tbUsuarios_DeshabilitarUsuarios" />
+          <FunctionImportMapping FunctionImportName="UDP_tbusuarios_EditarUsuario" FunctionName="ACTIVOSModel.Store.UDP_tbusuarios_EditarUsuario" />
+          <FunctionImportMapping FunctionImportName="UDP_tbUsuarios_HabilitarUsuarios" FunctionName="ACTIVOSModel.Store.UDP_tbUsuarios_HabilitarUsuarios" />
+          <FunctionImportMapping FunctionImportName="UDP_tbusuarios_InsertarUsuario" FunctionName="ACTIVOSModel.Store.UDP_tbusuarios_InsertarUsuario" />
+          <FunctionImportMapping FunctionImportName="UDP_tbUsuarios_ListarUsuarios" FunctionName="ACTIVOSModel.Store.UDP_tbUsuarios_ListarUsuarios">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ACTIVOSModel.UDP_tbUsuarios_ListarUsuarios_Result">
+                <ScalarProperty Name="usua_Id" ColumnName="usua_Id" />
+                <ScalarProperty Name="usua_UsuarioNombre" ColumnName="usua_UsuarioNombre" />
+                <ScalarProperty Name="usua_UsuarioApellido" ColumnName="usua_UsuarioApellido" />
+                <ScalarProperty Name="usua_Usuario" ColumnName="usua_Usuario" />
+                <ScalarProperty Name="usua_UsuarioCreacion" ColumnName="usua_UsuarioCreacion" />
+                <ScalarProperty Name="usua_FechaCreacion" ColumnName="usua_FechaCreacion" />
+                <ScalarProperty Name="usua_Modificacion" ColumnName="usua_Modificacion" />
+                <ScalarProperty Name="usua_FechaModificacion" ColumnName="usua_FechaModificacion" />
+                <ScalarProperty Name="usua_Estado" ColumnName="usua_Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UDP_tbUsuarios_VerificarUsuarios" FunctionName="ACTIVOSModel.Store.UDP_tbUsuarios_VerificarUsuarios" />
+          <FunctionImportMapping FunctionImportName="UDP_tb_Activos_DarBajaActivo" FunctionName="ACTIVOSModel.Store.UDP_tb_Activos_DarBajaActivo" />
+          <FunctionImportMapping FunctionImportName="UDP_tbActivos_DarDeBajaActivo" FunctionName="ACTIVOSModel.Store.UDP_tbActivos_DarDeBajaActivo" />
+          <FunctionImportMapping FunctionImportName="UDP_tbActivos_EditarActivos" FunctionName="ACTIVOSModel.Store.UDP_tbActivos_EditarActivos" />
+          <FunctionImportMapping FunctionImportName="UDP_tbActivos_InsertarActivos" FunctionName="ACTIVOSModel.Store.UDP_tbActivos_InsertarActivos" />
+          <FunctionImportMapping FunctionImportName="UDP_tbActivos_ListarActivos" FunctionName="ACTIVOSModel.Store.UDP_tbActivos_ListarActivos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ACTIVOSModel.UDP_tbActivos_ListarActivos_Result">
+                <ScalarProperty Name="acvo_Id" ColumnName="acvo_Id" />
+                <ScalarProperty Name="acvo_Nombre" ColumnName="acvo_Nombre" />
+                <ScalarProperty Name="acvo_NumeroSerie" ColumnName="acvo_NumeroSerie" />
+                <ScalarProperty Name="viut_Id" ColumnName="viut_Id" />
+                <ScalarProperty Name="viut_VidaUtil" ColumnName="viut_VidaUtil" />
+                <ScalarProperty Name="clie_Id" ColumnName="clie_Id" />
+                <ScalarProperty Name="clie_NombreCliente" ColumnName="clie_NombreCliente" />
+                <ScalarProperty Name="clie_CodigoCompania" ColumnName="clie_CodigoCompania" />
+                <ScalarProperty Name="acvo_Ubicacion" ColumnName="acvo_Ubicacion" />
+                <ScalarProperty Name="acvo_FechaAdquisicion" ColumnName="acvo_FechaAdquisicion" />
+                <ScalarProperty Name="acvo_InicioDepreciacion" ColumnName="acvo_InicioDepreciacion" />
+                <ScalarProperty Name="acvo_CostoOriginal" ColumnName="acvo_CostoOriginal" />
+                <ScalarProperty Name="acvo_ValorResidual" ColumnName="acvo_ValorResidual" />
+                <ScalarProperty Name="acvo_CostoDespreciable" ColumnName="acvo_CostoDespreciable" />
+                <ScalarProperty Name="acvo_Estado" ColumnName="acvo_Estado" />
+                <ScalarProperty Name="acvo_FechaCreacion" ColumnName="acvo_FechaCreacion" />
+                <ScalarProperty Name="acvo_FechaModificacion" ColumnName="acvo_FechaModificacion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UDP_tbActivos_ReporteFechas" FunctionName="ACTIVOSModel.Store.UDP_tbActivos_ReporteFechas">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ACTIVOSModel.UDP_tbActivos_ReporteFechas_Result">
+                <ScalarProperty Name="acvo_Nombre" ColumnName="acvo_Nombre" />
+                <ScalarProperty Name="acvo_NumeroSerie" ColumnName="acvo_NumeroSerie" />
+                <ScalarProperty Name="viut_Objeto" ColumnName="viut_Objeto" />
+                <ScalarProperty Name="viut_VidaUtil" ColumnName="viut_VidaUtil" />
+                <ScalarProperty Name="acvo_Ubicacion" ColumnName="acvo_Ubicacion" />
+                <ScalarProperty Name="acvo_FechaAdquisicion" ColumnName="acvo_FechaAdquisicion" />
+                <ScalarProperty Name="acvo_InicioDepreciacion" ColumnName="acvo_InicioDepreciacion" />
+                <ScalarProperty Name="acvo_CostoOriginal" ColumnName="acvo_CostoOriginal" />
+                <ScalarProperty Name="acvo_ValorResidual" ColumnName="acvo_ValorResidual" />
+                <ScalarProperty Name="acvo_FechaCreacion" ColumnName="acvo_FechaCreacion" />
+                <ScalarProperty Name="acvo_CostoDespreciable" ColumnName="acvo_CostoDespreciable" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UDP_tbActivos_VerificarActivosCliente" FunctionName="ACTIVOSModel.Store.UDP_tbActivos_VerificarActivosCliente" />
+          <FunctionImportMapping FunctionImportName="UDP_tbActivos_VerificarActivosNoDadosBajaCliente" FunctionName="ACTIVOSModel.Store.UDP_tbActivos_VerificarActivosNoDadosBajaCliente" />
+          <FunctionImportMapping FunctionImportName="UDP_tbActivos_VerificarActivosTotalesCliente" FunctionName="ACTIVOSModel.Store.UDP_tbActivos_VerificarActivosTotalesCliente" />
+          <FunctionImportMapping FunctionImportName="UDP_tbClientes_CantidadDeClientes" FunctionName="ACTIVOSModel.Store.UDP_tbClientes_CantidadDeClientes" />
+          <FunctionImportMapping FunctionImportName="UDP_tbClientes_ClienteConActivosBajados" FunctionName="ACTIVOSModel.Store.UDP_tbClientes_ClienteConActivosBajados">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ACTIVOSModel.UDP_tbClientes_ClienteConActivosBajados_Result">
+                <ScalarProperty Name="clie_NombreCliente" ColumnName="clie_NombreCliente" />
+                <ScalarProperty Name="clie_CodigoCompania" ColumnName="clie_CodigoCompania" />
+                <ScalarProperty Name="TotalActivos" ColumnName="TotalActivos" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UDP_tbClientes_ClienteConActivosNoBajados" FunctionName="ACTIVOSModel.Store.UDP_tbClientes_ClienteConActivosNoBajados">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ACTIVOSModel.UDP_tbClientes_ClienteConActivosNoBajados_Result">
+                <ScalarProperty Name="clie_NombreCliente" ColumnName="clie_NombreCliente" />
+                <ScalarProperty Name="clie_CodigoCompania" ColumnName="clie_CodigoCompania" />
+                <ScalarProperty Name="TotalActivos" ColumnName="TotalActivos" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UDP_tbVidaUtil_Editar" FunctionName="ACTIVOSModel.Store.UDP_tbVidaUtil_Editar" />
+          <FunctionImportMapping FunctionImportName="UDP_tbVidaUtil_Insertar" FunctionName="ACTIVOSModel.Store.UDP_tbVidaUtil_Insertar" />
+          <FunctionImportMapping FunctionImportName="UDP_tbVidaUtil_ListarVidaUtil" FunctionName="ACTIVOSModel.Store.UDP_tbVidaUtil_ListarVidaUtil">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ACTIVOSModel.UDP_tbVidaUtil_ListarVidaUtil_Result">
+                <ScalarProperty Name="viut_Id" ColumnName="viut_Id" />
+                <ScalarProperty Name="viut_Objeto" ColumnName="viut_Objeto" />
+                <ScalarProperty Name="viut_Descripcion" ColumnName="viut_Descripcion" />
+                <ScalarProperty Name="viut_VidaUtil" ColumnName="viut_VidaUtil" />
+                <ScalarProperty Name="viut_Estado" ColumnName="viut_Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UDP_tbVidaUtil_VidaUtilMasUsadas" FunctionName="ACTIVOSModel.Store.UDP_tbVidaUtil_VidaUtilMasUsadas">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ACTIVOSModel.UDP_tbVidaUtil_VidaUtilMasUsadas_Result">
+                <ScalarProperty Name="viut_Objeto" ColumnName="viut_Objeto" />
+                <ScalarProperty Name="viut_VidaUtil" ColumnName="viut_VidaUtil" />
+                <ScalarProperty Name="viut_Descripcion" ColumnName="viut_Descripcion" />
+                <ScalarProperty Name="CantidadUsadas" ColumnName="CantidadUsadas" />
+                <ScalarProperty Name="Porcentaje" ColumnName="Porcentaje" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GenerarReportePorCliente" FunctionName="ACTIVOSModel.Store.GenerarReportePorCliente">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ACTIVOSModel.GenerarReportePorCliente_Result">
+                <ScalarProperty Name="acvo_Nombre" ColumnName="acvo_Nombre" />
+                <ScalarProperty Name="viut_Descripcion" ColumnName="viut_Descripcion" />
+                <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
+                <ScalarProperty Name="acvo_FechaAdquisicion" ColumnName="acvo_FechaAdquisicion" />
+                <ScalarProperty Name="acvo_InicioDepreciacion" ColumnName="acvo_InicioDepreciacion" />
+                <ScalarProperty Name="acvo_CostoOriginal" ColumnName="acvo_CostoOriginal" />
+                <ScalarProperty Name="viut_VidaUtil" ColumnName="viut_VidaUtil" />
+                <ScalarProperty Name="acvo_ValorResidual" ColumnName="acvo_ValorResidual" />
+                <ScalarProperty Name="acvo_CostoDespreciable" ColumnName="acvo_CostoDespreciable" />
+                <ScalarProperty Name="PeriodoMeses" ColumnName="PeriodoMeses" />
+                <ScalarProperty Name="TasaMensual" ColumnName="TasaMensual" />
+                <ScalarProperty Name="PeriodoA" ColumnName="PeriodoA" />
+                <ScalarProperty Name="TasaAnual" ColumnName="TasaAnual" />
+                <ScalarProperty Name="DepPeriodoMeses" ColumnName="DepPeriodoMeses" />
+                <ScalarProperty Name="DepEnero" ColumnName="DepEnero" />
+                <ScalarProperty Name="DepFebrero" ColumnName="DepFebrero" />
+                <ScalarProperty Name="DepMarzo" ColumnName="DepMarzo" />
+                <ScalarProperty Name="DepAbril" ColumnName="DepAbril" />
+                <ScalarProperty Name="DepMayo" ColumnName="DepMayo" />
+                <ScalarProperty Name="DepJunio" ColumnName="DepJunio" />
+                <ScalarProperty Name="DepJulio" ColumnName="DepJulio" />
+                <ScalarProperty Name="DepAgosto" ColumnName="DepAgosto" />
+                <ScalarProperty Name="DepSeptiembre" ColumnName="DepSeptiembre" />
+                <ScalarProperty Name="DepOctubre" ColumnName="DepOctubre" />
+                <ScalarProperty Name="DepNoviembre" ColumnName="DepNoviembre" />
+                <ScalarProperty Name="DepDiciembre" ColumnName="DepDiciembre" />
+                <ScalarProperty Name="DelPeriodo" ColumnName="DelPeriodo" />
+                <ScalarProperty Name="ACUMULADA" ColumnName="ACUMULADA" />
+                <ScalarProperty Name="ValorLibro" ColumnName="ValorLibro" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UDP_tbClientes_EditarClientes" FunctionName="ACTIVOSModel.Store.UDP_tbClientes_EditarClientes" />
+          <FunctionImportMapping FunctionImportName="UDP_tbClientes_InsertarClientes" FunctionName="ACTIVOSModel.Store.UDP_tbClientes_InsertarClientes" />
+          <FunctionImportMapping FunctionImportName="UDP_tbClientes_ListarClientes" FunctionName="ACTIVOSModel.Store.UDP_tbClientes_ListarClientes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ACTIVOSModel.UDP_tbClientes_ListarClientes_Result">
+                <ScalarProperty Name="clie_Id" ColumnName="clie_Id" />
+                <ScalarProperty Name="clie_CodigoCompania" ColumnName="clie_CodigoCompania" />
+                <ScalarProperty Name="clie_NombreCliente" ColumnName="clie_NombreCliente" />
+                <ScalarProperty Name="clie_Responsale" ColumnName="clie_Responsale" />
+                <ScalarProperty Name="clie_RTNCliente" ColumnName="clie_RTNCliente" />
+                <ScalarProperty Name="clie_Lugar" ColumnName="clie_Lugar" />
+                <ScalarProperty Name="clie_Telefono" ColumnName="clie_Telefono" />
+                <ScalarProperty Name="clie_FechaCreacion" ColumnName="clie_FechaCreacion" />
+                <ScalarProperty Name="clie_FechaModificacion" ColumnName="clie_FechaModificacion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UDP_tbClientes_ValidarRTN" FunctionName="ACTIVOSModel.Store.UDP_tbClientes_ValidarRTN" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,40 @@
+﻿.table-container {
+    overflow-x: auto; /* Agrega un scrollbar horizontal si es necesario */
+    max-width: 100%; /* Establece el ancho máximo del contenedor */
+}
+
+    /* Si deseas personalizar aún más la apariencia del scrollbar horizontal */
+    .table-container::-webkit-scrollbar {
+        height: 12px; /* Altura del scrollbar */
+    }
+
+    .table-container::-webkit-scrollbar-thumb {
+        background-color: #888; /* Color del thumb (el control deslizante) */
+    }
+
+    .table-container::-webkit-scrollbar-track {
+        background-color: #f1f1f1; /* Color del fondo del scrollbar */
+    }
+
+.acciones-header {
+    width: 450px; /* Puedes ajustar este valor según tus necesidades */
+    height: 30px;
+    white-space: nowrap; /* Evita que el contenido se divida en varias líneas */
+    overflow-x: auto; /* Agrega un scrollbar horizontal si es necesario */
+}
+
+/* Ajusta el estilo del botón dentro de la columna "Acciones" si es necesario */
+.acciones-header .btn {
+    width: 100%; /* Ajusta el ancho del botón para que llene la columna */
+}
+
+.btn-group .btn {
+    width: auto; /* Ajusta el ancho automáticamente según el contenido */
+    margin-right: 5px; /* Espacio entre botones */
+}
+
+/* Estilo para el botón "Reporte Activos" */
+#formReporte button {
+    width: auto; /* Ajusta el ancho automáticamente según el contenido */
+    margin-left: 5px; /* Espacio a la izquierda del botón */
+}

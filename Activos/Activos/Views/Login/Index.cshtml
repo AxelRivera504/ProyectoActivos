@@ -1,0 +1,330 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- ===============================================-->
+    <!--    Document Title-->
+    <!-- ===============================================-->
+    <title>Falcon | Dashboard &amp; Web App Template</title>
+
+
+    <!-- ===============================================-->
+    <!--    Favicons-->
+    <!-- ===============================================-->
+    <link rel="apple-touch-icon" sizes="180x180" href="~/Content/img/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/Content/img/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Content/img/favicons/favicon-16x16.png">
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/img/favicons/favicon.ico">
+    <link rel="manifest" href="~/Content/img/favicons/manifest.json">
+    <meta name="msapplication-TileImage" content="~/Content/img/favicons/mstile-150x150.png">
+    <meta name="theme-color" content="#ffffff">
+    <script src="~/Content/js/config.js"></script>
+    <script src="~/Content/vendors/overlayscrollbars/OverlayScrollbars.min.js"></script>
+
+
+    <!-- ===============================================-->
+    <!--    Stylesheets-->
+    <!-- ===============================================-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:300,400,500,600,700,800,900&amp;display=swap" rel="stylesheet">
+    <link href="~/Content/vendors/overlayscrollbars/OverlayScrollbars.min.css" rel="stylesheet">
+    <link href="~/Content/css/theme-rtl.min.css" rel="stylesheet" id="style-rtl">
+    <link href="~/Content/css/theme.min.css" rel="stylesheet" id="style-default">
+    <link href="~/Content/css/user-rtl.min.css" rel="stylesheet" id="user-style-rtl">
+    <link href="~/Content/css/user.min.css" rel="stylesheet" id="user-style-default">
+    <link href="~/Content/css/toastr/toastr.min.css" rel="stylesheet" />
+
+    <script>
+        window.history.forward();
+
+        var isRTL = JSON.parse(localStorage.getItem('isRTL'));
+        if (isRTL) {
+            var linkDefault = document.getElementById('style-default');
+            var userLinkDefault = document.getElementById('user-style-default');
+            linkDefault.setAttribute('disabled', true);
+            userLinkDefault.setAttribute('disabled', true);
+            document.querySelector('html').setAttribute('dir', 'rtl');
+        } else {
+            var linkRTL = document.getElementById('style-rtl');
+            var userLinkRTL = document.getElementById('user-style-rtl');
+            linkRTL.setAttribute('disabled', true);
+            userLinkRTL.setAttribute('disabled', true);
+        }
+    </script>
+</head>
+
+
+<body>
+
+    <!-- ===============================================-->
+    <!--    Main Content-->
+    <!-- ===============================================-->
+    <main class="main" id="top">
+        <div class="container-fluid">
+            <div class="row min-vh-100 flex-center g-0">
+                <div class="col-lg-8 col-xxl-5 py-3 position-relative">
+                    <img class="bg-auth-circle-shape" src="~/Content/img/icons/spot-illustrations/bg-shape.png" alt="" width="250"><img class="bg-auth-circle-shape-2" src="~/Content/img/icons/spot-illustrations/shape-1.png" alt="" width="150">
+                    <div class="card overflow-hidden z-index-1">
+                        <div class="card-body p-0">
+                            <div class="row g-0 h-100">
+                                <div class="col-md-5 text-center bg-card-gradient">
+                                    <div class="position-relative p-4 pt-md-5 pb-md-7 light">
+                                        <div class="bg-holder bg-auth-card-shape" style="background-image:url(~/Content/img/icons/spot-illustrations/half-circle.png);">
+                                        </div>
+                                        <!--/.bg-holder-->
+
+                                        <div class="z-index-1 position-relative">
+                                            <a class="link-light mb-4 font-sans-serif fs-4 d-inline-block fw-bolder" href="../../../index.html">Activos</a>
+                                            <p class="opacity-75 text-white">Algun texto que quiera poner aqui para que se vea masiso el login XD!</p>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3 mb-4 mt-md-4 mb-md-5 light">
+                                        <p class="text-white">No se que puede ir aquí XD<br><a class="text-decoration-underline link-light" href="../../../pages/authentication/card/register.html">WOHOO!!</a></p>
+                                        <p class="mb-0 mt-4 mt-md-5 fs--1 fw-semi-bold text-white opacity-75">Lee nuestros <a class="text-decoration-underline text-white" href="#!">terminos</a> y <a class="text-decoration-underline text-white" href="#!">condiciones </a></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-7 d-flex flex-center">
+                                    <div class="p-4 p-md-5 flex-grow-1">
+                                        <div class="row flex-between-center">
+                                            <div class="col-auto">
+                                                <h3>Inicia Sesión</h3>
+                                            </div>
+                                        </div>
+                                        <form @Url.Action("Index") method="post">
+                                            <div class="form-group">
+                                                <label class="form-label" for="split-login-email">Nombre de usuario</label>&nbsp;@Html.ValidationMessage("UsernameError", htmlAttributes: new { style = "color:red;" })
+                                                <div class="input-group mb-3">
+                                                    <input type="text" class="form-control" placeholder="Nombre de usuario" autofocus name="txtUsername">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="form-label" for="split-login-email">Contraseña</label>&nbsp;@Html.ValidationMessage("ContraseniaError", htmlAttributes: new { style = "color:red;" })
+                                                <div class="input-group mb-3">
+                                                    <input type="password" class="form-control" placeholder="Contraseña" name="txtPassword">
+                                                </div>
+                                            </div>
+                                            <label class="form-label" for="split-login-email"></label>&nbsp;@Html.ValidationMessage("Validacion", htmlAttributes: new { style = "color:red;" })
+                                            <div class="row flex-between-center">
+                                                <div class="col-auto">
+                                                    <div class="form-check mb-0">
+                                                        <input class="form-check-input" type="checkbox" id="card-checkbox" checked="checked" />
+                                                        <label class="form-check-label mb-0" for="card-checkbox">Recuerdame</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <a class="btn btn-primary  btn-sm" onclick="LevantarModal()">
+                                                        <div class="d-flex align-items-center">                                
+                                                            <span class="nav-link-text ps-1">¿Olvidaste tu contraseña?</span>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="d-grid mt-5">
+                                                <button class="btn btn-primary btn-lg" type="submit">Iniciar sesión</button>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal fade" id="modal-default">
+        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 650px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Cambiar Contraseña</h4>
+                    <button type="button" class="close" data-dismiss="modal" onclick="Limpiar()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label class="col-form-label" for="Usuario-name">Usuario<label id="lb1" hidden style="color:red;">*</label></label>
+                            <label style="color:red" id="lblErrorIdEmp"></label>
+                            <input type="text" id="txtUsuario" class="form-control" placeholder="Ingrese su nombre de usuario" />
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="col-form-label" for="Usuario-name">Contraseña<label id="lb2" hidden style="color:red;">*</label></label>
+                            <label style="color:red" id="lblErrorIdEmp"></label>
+                            <input type="text" id="txtpassword" class="form-control" placeholder="Ingrese su nueva contraseña" />
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline-secondary  btn-sm" type="button" onclick="Limpiar()" data-bs-dismiss="modal">Cancelar</button>
+                    <button class="btn btn-success  btn-sm" id="BtnGuardar" onclick="Validar()">Cambiar Contraseña</button>
+                </div>
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+    </div>
+
+
+    <!-- ===============================================-->
+    <!--    End of Main Content-->
+    <!-- ===============================================-->
+    <!-- ===============================================-->
+    <!--    JavaScripts-->
+    <!-- ===============================================-->
+    <script src="/Content/js/jquery-3.1.1.min.js"></script>
+
+    <script src="~/Content/js/toastr/toastr.min.js"></script>
+
+
+
+    <script src="~/Content/vendors/popper/popper.min.js"></script>
+    <script src="~/Content/vendors/bootstrap/bootstrap.min.js"></script>
+    <script src="~/Content/vendors/anchorjs/anchor.min.js"></script>
+    <script src="~/Content/vendors/is/is.min.js"></script>
+    <script src="~/Content/vendors/fontawesome/all.min.js"></script>
+    <script src="~/Content/vendors/lodash/lodash.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
+    <script src="~/Content/vendors/list.js/list.min.js"></script>
+    <script src="~/Content/assets/js/theme.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            localStorage.setItem("Cliente", "0");
+            console.log(localStorage.getItem("Login"))
+            if (localStorage.getItem("Login") == 1) {
+                MostrarMensajeWarning("Usuario o contraseña son incorrectos");
+                localStorage.setItem("Login", 0);
+            }
+            if (localStorage.getItem("Cambiar") == 1) {
+                MostrarMensajeSuccess("Contraseña actualizada con exito");
+                localStorage.setItem("Cambiar", 0);
+            }
+
+            if (localStorage.getItem("cerrar") == 1) {
+                MostrarMensajeSuccess("Gracias por visitar Activos");
+                localStorage.setItem("cerrar", 0);
+            }
+        });
+
+        function MostrarMensajeSuccess(bodymessage) {
+            toastr.success(bodymessage, 'Exitoso')
+        }
+
+        function MostrarMensajeWarning(bodymessage) {
+            toastr.warning(bodymessage, 'Advertencia')
+        }
+
+        toastr.options = {
+            closeButton: true,
+            progressBar: true
+        };
+
+
+        $("#txtUsuario").focusout(function () {
+            if ($("#txtUsuario").val() != "") {
+                $.ajax({
+                url: '@Url.Action("validarUsernameExiste", "Login")',
+                method: 'POST',
+                data: { username: $('#txtUsuario').val() },
+                success: function (result) {
+                    if (result.usernameExiste) {
+                        $('#lb1').attr("hidden", "");
+                        $("#BtnGuardar").removeAttr("disabled");
+                    } else {
+                        $("#BtnGuardar").attr("disabled", "");
+                        $('#lb1').removeAttr("hidden");
+                        MostrarMensajeWarning('El usuario no existe');
+                    }
+                }
+            });
+            }
+        });
+
+        function LevantarModal() {
+            $('#modal-default').modal("show");
+        }
+
+        function Validar() {
+            var isValid = true;
+            var Usuario = $('#txtUsuario').val();
+            var Contra = $('#txtpassword').val();
+            var mensaje = "";
+
+            if (Usuario == "") {
+                isValid = false;
+                mensaje += "Usuario.\n";
+                $('#lb1').removeAttr("hidden");
+            }
+            if (Usuario != "") {
+                $('#lb1').attr("hidden", "");
+            }
+            if (Contra == "") {
+                isValid = false;
+                mensaje += "Contraseña.\n";
+                $('#lb2').removeAttr("hidden");
+            }
+            if (Contra != "") {
+                $('#lb2').attr("hidden", "");
+            }
+
+            if (isValid) {
+                CambiarPassword(Usuario, Contra);
+            } else {
+                MostrarMensajeWarning('Faltan los siguientes campos por llenar:\n' + mensaje);
+            }
+        }
+
+        function CambiarPassword(Usuario, Contra) {
+            $.ajax({
+                url: '@Url.Action("CambiarPass","Login")',
+                type: 'POST',
+                data: { username: Usuario, passNueva: Contra },
+                success: function (result) {
+                    if (result.passUpdate) {
+                        localStorage.setItem("Cambiar", 1);
+                        window.location.reload();
+                    } if (result.passUpdate == false) {
+                        MostrarMensajeWarning('Ocurrio un error');
+                    }
+                }
+            });
+        }
+
+        function Limpiar() {
+            setTimeout(() => {
+                $("#txtUsuario").val("");
+                $("#txtpassword").val("");
+                $("#BtnGuardar").removeAttr("disabled");
+                LimpiarLb();
+            }, "500");
+
+            $('#modal-default').modal("hide");
+        }
+
+
+        function LimpiarLb() {
+            $('#lb1').attr("hidden", "");
+            $('#lb2').attr("hidden", "");
+        }
+
+    </script>
+
+</body>
+
+</html>

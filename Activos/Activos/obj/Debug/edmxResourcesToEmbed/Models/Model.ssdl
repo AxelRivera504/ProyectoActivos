@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ACTIVOSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbUsuarios">
+    <Key>
+      <PropertyRef Name="usua_Id" />
+    </Key>
+    <Property Name="usua_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="usua_UsuarioNombre" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="usua_UsuarioApellido" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="usua_Usuario" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="usua_Contra" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="usua_UsuarioCreacion" Type="int" Nullable="false" />
+    <Property Name="usua_FechaCreacion" Type="datetime" Nullable="false" />
+    <Property Name="usua_Modificacion" Type="int" />
+    <Property Name="usua_FechaModificacion" Type="datetime" />
+    <Property Name="usua_Estado" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbActivos">
+    <Key>
+      <PropertyRef Name="acvo_Id" />
+    </Key>
+    <Property Name="acvo_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="acvo_Nombre" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="acvo_NumeroSerie" Type="nvarchar" MaxLength="20" />
+    <Property Name="viut_Id" Type="int" Nullable="false" />
+    <Property Name="clie_Id" Type="int" Nullable="false" />
+    <Property Name="acvo_Ubicacion" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="acvo_FechaAdquisicion" Type="date" Nullable="false" />
+    <Property Name="acvo_InicioDepreciacion" Type="date" Nullable="false" />
+    <Property Name="acvo_CostoOriginal" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="acvo_ValorResidual" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="acvo_CostoDespreciable" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="usua_UsuarioCreacion" Type="int" Nullable="false" />
+    <Property Name="acvo_FechaCreacion" Type="datetime" Nullable="false" />
+    <Property Name="usua_Modificacion" Type="int" />
+    <Property Name="acvo_FechaModificacion" Type="datetime" />
+    <Property Name="acvo_Estado" Type="bit" />
+    <Property Name="acvo_FechaBajada" Type="date" />
+  </EntityType>
+  <EntityType Name="tbVidaUtil">
+    <Key>
+      <PropertyRef Name="viut_Id" />
+    </Key>
+    <Property Name="viut_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="viut_Objeto" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="viut_Descripcion" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="viut_VidaUtil" Type="int" Nullable="false" />
+    <Property Name="usua_UsuarioCreacion" Type="int" Nullable="false" />
+    <Property Name="viut_FechaCreacion" Type="datetime" Nullable="false" />
+    <Property Name="usua_Modificacion" Type="int" />
+    <Property Name="viut_FechaModificacion" Type="datetime" />
+    <Property Name="viut_Estado" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbClientes">
+    <Key>
+      <PropertyRef Name="clie_Id" />
+    </Key>
+    <Property Name="clie_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="clie_CodigoCompania" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="clie_NombreCliente" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="clie_RTNCliente" Type="nvarchar" MaxLength="16" Nullable="false" />
+    <Property Name="clie_Lugar" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="clie_Responsale" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="clie_Telefono" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="usua_UsuarioCreacion" Type="int" Nullable="false" />
+    <Property Name="clie_FechaCreacion" Type="datetime" Nullable="false" />
+    <Property Name="usua_Modificacion" Type="int" />
+    <Property Name="clie_FechaModificacion" Type="datetime" />
+    <Property Name="clie_Estado" Type="bit" />
+  </EntityType>
+  <Association Name="FK_Acce_tbUsuarios_usua_Modificacion">
+    <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="0..1" />
+    <End Role="tbUsuarios1" Type="Self.tbUsuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsuarios">
+        <PropertyRef Name="usua_Id" />
+      </Principal>
+      <Dependent Role="tbUsuarios1">
+        <PropertyRef Name="usua_Modificacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Acce_tbUsuarios_usua_UsuarioCreacion">
+    <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="1" />
+    <End Role="tbUsuarios1" Type="Self.tbUsuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsuarios">
+        <PropertyRef Name="usua_Id" />
+      </Principal>
+      <Dependent Role="tbUsuarios1">
+        <PropertyRef Name="usua_UsuarioCreacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Acti_tbActivos_Acti_tbVidaUtil_viut_Id">
+    <End Role="tbVidaUtil" Type="Self.tbVidaUtil" Multiplicity="1" />
+    <End Role="tbActivos" Type="Self.tbActivos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbVidaUtil">
+        <PropertyRef Name="viut_Id" />
+      </Principal>
+      <Dependent Role="tbActivos">
+        <PropertyRef Name="viut_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Acti_tbActivos_Gral_tbCliente_clac_Id">
+    <End Role="tbClientes" Type="Self.tbClientes" Multiplicity="1" />
+    <End Role="tbActivos" Type="Self.tbActivos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbClientes">
+        <PropertyRef Name="clie_Id" />
+      </Principal>
+      <Dependent Role="tbActivos">
+        <PropertyRef Name="clie_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Acti_tbActivos_usua_Modificacion">
+    <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="0..1" />
+    <End Role="tbActivos" Type="Self.tbActivos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsuarios">
+        <PropertyRef Name="usua_Id" />
+      </Principal>
+      <Dependent Role="tbActivos">
+        <PropertyRef Name="usua_Modificacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Acti_tbActivos_usua_UsuarioCreacion">
+    <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="1" />
+    <End Role="tbActivos" Type="Self.tbActivos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsuarios">
+        <PropertyRef Name="usua_Id" />
+      </Principal>
+      <Dependent Role="tbActivos">
+        <PropertyRef Name="usua_UsuarioCreacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Acti_tbVidaUtil_usua_UsuarioCreacion">
+    <End Role="tbUsuarios" Type="Self.tbUsuarios" Multiplicity="1" />
+    <End Role="tbVidaUtil" Type="Self.tbVidaUtil" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsuarios">
+        <PropertyRef Name="usua_Id" />
+      </Principal>
+      <Dependent Role="tbVidaUtil">
+        <PropertyRef Name="usua_UsuarioCreacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="UDP_IniciarSesion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acce">
+    <Parameter Name="usua_Usuario" Type="nvarchar" Mode="In" />
+    <Parameter Name="usua_Contra" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="UDP_tbusuarios_CambiarPassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acce">
+    <Parameter Name="usua_Usuario" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="usua_Contra" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="UDP_tbUsuarios_DeshabilitarUsuarios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acce">
+    <Parameter Name="usua_Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UDP_tbusuarios_EditarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acce">
+    <Parameter Name="usua_Id" Type="int" Mode="In" />
+    <Parameter Name="usua_UsuarioNombre" Type="nvarchar" Mode="In" />
+    <Parameter Name="usua_UsuarioApellido" Type="nvarchar" Mode="In" />
+    <Parameter Name="usua_UsuarioModificacion" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UDP_tbUsuarios_HabilitarUsuarios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acce">
+    <Parameter Name="usua_Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UDP_tbusuarios_InsertarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acce">
+    <Parameter Name="usua_UsuarioNombre" Type="nvarchar" Mode="In" />
+    <Parameter Name="usua_UsuarioApellido" Type="nvarchar" Mode="In" />
+    <Parameter Name="usua_Usuario" Type="nvarchar" Mode="In" />
+    <Parameter Name="usua_Contra" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="usua_UsuarioCreacion" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UDP_tbUsuarios_ListarUsuarios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acce" />
+  <Function Name="UDP_tbUsuarios_VerificarUsuarios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acce">
+    <Parameter Name="usua_Usuario" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="UDP_tb_Activos_DarBajaActivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acti">
+    <Parameter Name="acvo_Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UDP_tbActivos_DarDeBajaActivo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acti">
+    <Parameter Name="acvo_Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UDP_tbActivos_EditarActivos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acti">
+    <Parameter Name="acvo_Id" Type="int" Mode="In" />
+    <Parameter Name="acvo_Nombre" Type="nvarchar" Mode="In" />
+    <Parameter Name="acvo_NumeroSerie" Type="nvarchar" Mode="In" />
+    <Parameter Name="viut_Id" Type="int" Mode="In" />
+    <Parameter Name="clie_Id" Type="int" Mode="In" />
+    <Parameter Name="acvo_Ubicacion" Type="nvarchar" Mode="In" />
+    <Parameter Name="acvo_FechaAdquisicion" Type="date" Mode="In" />
+    <Parameter Name="acvo_CostoOriginal" Type="decimal" Mode="In" />
+    <Parameter Name="usua_Modificacion" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UDP_tbActivos_InsertarActivos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acti">
+    <Parameter Name="acvo_Nombre" Type="nvarchar" Mode="In" />
+    <Parameter Name="acvo_NumeroSerie" Type="nvarchar" Mode="In" />
+    <Parameter Name="viut_Id" Type="int" Mode="In" />
+    <Parameter Name="clie_Id" Type="int" Mode="In" />
+    <Parameter Name="acvo_Ubicacion" Type="nvarchar" Mode="In" />
+    <Parameter Name="acvo_FechaAdquisicion" Type="date" Mode="In" />
+    <Parameter Name="acvo_CostoOriginal" Type="decimal" Mode="In" />
+    <Parameter Name="usua_UsuarioCreacion" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UDP_tbActivos_ListarActivos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acti" />
+  <Function Name="UDP_tbActivos_ReporteFechas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acti">
+    <Parameter Name="clie_Id" Type="int" Mode="In" />
+    <Parameter Name="FechaInicio" Type="date" Mode="In" />
+    <Parameter Name="FechaFin" Type="date" Mode="In" />
+  </Function>
+  <Function Name="UDP_tbActivos_VerificarActivosCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acti">
+    <Parameter Name="clie_Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UDP_tbActivos_VerificarActivosNoDadosBajaCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acti">
+    <Parameter Name="clie_Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UDP_tbActivos_VerificarActivosTotalesCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acti">
+    <Parameter Name="clie_Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UDP_tbClientes_CantidadDeClientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acti" />
+  <Function Name="UDP_tbClientes_ClienteConActivosBajados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acti" />
+  <Function Name="UDP_tbClientes_ClienteConActivosNoBajados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acti" />
+  <Function Name="UDP_tbVidaUtil_Editar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acti">
+    <Parameter Name="viut_Id" Type="int" Mode="In" />
+    <Parameter Name="viut_Objeto" Type="nvarchar" Mode="In" />
+    <Parameter Name="viut_Descripcion" Type="nvarchar" Mode="In" />
+    <Parameter Name="viut_VidaUtil" Type="int" Mode="In" />
+    <Parameter Name="usuarioModificacion" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UDP_tbVidaUtil_Insertar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acti">
+    <Parameter Name="viut_Objeto" Type="nvarchar" Mode="In" />
+    <Parameter Name="viut_Descripcion" Type="nvarchar" Mode="In" />
+    <Parameter Name="viut_VidaUtil" Type="int" Mode="In" />
+    <Parameter Name="usuarioCreacion" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UDP_tbVidaUtil_ListarVidaUtil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acti" />
+  <Function Name="UDP_tbVidaUtil_VidaUtilMasUsadas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Acti" />
+  <Function Name="GenerarReportePorCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="clie_Id" Type="int" Mode="In" />
+    <Parameter Name="acvo_Estado" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="UDP_tbClientes_EditarClientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Gral">
+    <Parameter Name="clie_Id" Type="int" Mode="In" />
+    <Parameter Name="clie_CodigoCompania" Type="nvarchar" Mode="In" />
+    <Parameter Name="clie_NombreCliente" Type="nvarchar" Mode="In" />
+    <Parameter Name="clie_RTNCliente" Type="nvarchar" Mode="In" />
+    <Parameter Name="clie_Lugar" Type="nvarchar" Mode="In" />
+    <Parameter Name="clie_Responsale" Type="nvarchar" Mode="In" />
+    <Parameter Name="clie_Telefono" Type="nvarchar" Mode="In" />
+    <Parameter Name="usua_Modificacion" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UDP_tbClientes_InsertarClientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Gral">
+    <Parameter Name="clie_CodigoCompania" Type="nvarchar" Mode="In" />
+    <Parameter Name="clie_NombreCliente" Type="nvarchar" Mode="In" />
+    <Parameter Name="clie_RTNCliente" Type="nvarchar" Mode="In" />
+    <Parameter Name="clie_Lugar" Type="nvarchar" Mode="In" />
+    <Parameter Name="clie_Responsale" Type="nvarchar" Mode="In" />
+    <Parameter Name="clie_Telefono" Type="nvarchar" Mode="In" />
+    <Parameter Name="usua_UsuarioCreacion" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UDP_tbClientes_ListarClientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Gral" />
+  <Function Name="UDP_tbClientes_ValidarRTN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Gral">
+    <Parameter Name="clie_RTNCliente" Type="nvarchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="ACTIVOSModelStoreContainer">
+    <EntitySet Name="tbUsuarios" EntityType="Self.tbUsuarios" Schema="Acce" store:Type="Tables" />
+    <EntitySet Name="tbActivos" EntityType="Self.tbActivos" Schema="Acti" store:Type="Tables" />
+    <EntitySet Name="tbVidaUtil" EntityType="Self.tbVidaUtil" Schema="Acti" store:Type="Tables" />
+    <EntitySet Name="tbClientes" EntityType="Self.tbClientes" Schema="Gral" store:Type="Tables" />
+    <AssociationSet Name="FK_Acce_tbUsuarios_usua_Modificacion" Association="Self.FK_Acce_tbUsuarios_usua_Modificacion">
+      <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+      <End Role="tbUsuarios1" EntitySet="tbUsuarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Acce_tbUsuarios_usua_UsuarioCreacion" Association="Self.FK_Acce_tbUsuarios_usua_UsuarioCreacion">
+      <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+      <End Role="tbUsuarios1" EntitySet="tbUsuarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Acti_tbActivos_Acti_tbVidaUtil_viut_Id" Association="Self.FK_Acti_tbActivos_Acti_tbVidaUtil_viut_Id">
+      <End Role="tbVidaUtil" EntitySet="tbVidaUtil" />
+      <End Role="tbActivos" EntitySet="tbActivos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Acti_tbActivos_Gral_tbCliente_clac_Id" Association="Self.FK_Acti_tbActivos_Gral_tbCliente_clac_Id">
+      <End Role="tbClientes" EntitySet="tbClientes" />
+      <End Role="tbActivos" EntitySet="tbActivos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Acti_tbActivos_usua_Modificacion" Association="Self.FK_Acti_tbActivos_usua_Modificacion">
+      <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+      <End Role="tbActivos" EntitySet="tbActivos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Acti_tbActivos_usua_UsuarioCreacion" Association="Self.FK_Acti_tbActivos_usua_UsuarioCreacion">
+      <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+      <End Role="tbActivos" EntitySet="tbActivos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Acti_tbVidaUtil_usua_UsuarioCreacion" Association="Self.FK_Acti_tbVidaUtil_usua_UsuarioCreacion">
+      <End Role="tbUsuarios" EntitySet="tbUsuarios" />
+      <End Role="tbVidaUtil" EntitySet="tbVidaUtil" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

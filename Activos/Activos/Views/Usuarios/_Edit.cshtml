@@ -1,0 +1,45 @@
+﻿
+
+<div class="modal fade" id="modal-Edit">
+    <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 650px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Edición Usuarios</h4>
+                <button type="button" class="close" data-dismiss="modal" onclick="LimpiarLbEdit()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label class="col-form-label" for="Usuario-name">Nombre<label id="lb1Edit" hidden style="color:red;">*</label></label>
+                        <label style="color:red" id="lblErrorIdEmp"></label>
+                        <input type="text" id="txtNombreEdit" class="form-control" />
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="col-form-label" for="Usuario-name">Apellido<label id="lb2Edit" hidden style="color:red;">*</label></label>
+                        <label style="color:red" id="lblErrorIdEmp"></label>
+                        <input type="text" id="txtApellidoEdit" class="form-control" />
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label class="col-form-label" for="Usuario-name">Usuario<label id="lb3Edit" hidden style="color:red;">*</label></label>
+                        <label style="color:red" id="lblErrorIdEmp"></label>
+                        <input type="text" class="form-control" id="txtUsuaEdit" disabled />
+                    </div>
+                    <input class="form-control" id="txtUsuaIdEdit" hidden type="text" />
+                </div>
+                <br />
+                <br />
+            </div>
+            <div class="modal-footer ">
+                <button type="button" class="btn btn-default" onclick="LimpiarLbEdit()" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" onclick="ValidarEditar()">Editar</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

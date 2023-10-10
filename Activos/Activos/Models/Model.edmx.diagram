@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d5290a80b3d049708c33c3e824b4c62d" Name="Diagram1">
+        <EntityTypeShape EntityType="ACTIVOSModel.tbUsuarios" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ACTIVOSModel.tbActivos" Width="1.5" PointX="5.25" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ACTIVOSModel.tbVidaUtil" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="ACTIVOSModel.tbClientes" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <AssociationConnector Association="ACTIVOSModel.FK_Acce_tbUsuarios_usua_Modificacion" ManuallyRouted="false" />
+        <AssociationConnector Association="ACTIVOSModel.FK_Acce_tbUsuarios_usua_UsuarioCreacion" ManuallyRouted="false" />
+        <AssociationConnector Association="ACTIVOSModel.FK_Acti_tbActivos_usua_Modificacion" ManuallyRouted="false" />
+        <AssociationConnector Association="ACTIVOSModel.FK_Acti_tbActivos_usua_UsuarioCreacion" ManuallyRouted="false" />
+        <AssociationConnector Association="ACTIVOSModel.FK_Acti_tbVidaUtil_usua_UsuarioCreacion" ManuallyRouted="false" />
+        <AssociationConnector Association="ACTIVOSModel.FK_Acti_tbActivos_Acti_tbVidaUtil_viut_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="ACTIVOSModel.FK_Acti_tbActivos_Gral_tbCliente_clac_Id" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

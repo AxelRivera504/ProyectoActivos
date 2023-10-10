@@ -1,0 +1,251 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ACTIVOSModelStoreContainer" CdmEntityContainer="ACTIVOSEntities16">
+    <EntitySetMapping Name="tbUsuarios">
+      <EntityTypeMapping TypeName="ACTIVOSModel.tbUsuarios">
+        <MappingFragment StoreEntitySet="tbUsuarios">
+          <ScalarProperty Name="usua_Id" ColumnName="usua_Id" />
+          <ScalarProperty Name="usua_UsuarioNombre" ColumnName="usua_UsuarioNombre" />
+          <ScalarProperty Name="usua_UsuarioApellido" ColumnName="usua_UsuarioApellido" />
+          <ScalarProperty Name="usua_Usuario" ColumnName="usua_Usuario" />
+          <ScalarProperty Name="usua_Contra" ColumnName="usua_Contra" />
+          <ScalarProperty Name="usua_UsuarioCreacion" ColumnName="usua_UsuarioCreacion" />
+          <ScalarProperty Name="usua_FechaCreacion" ColumnName="usua_FechaCreacion" />
+          <ScalarProperty Name="usua_Modificacion" ColumnName="usua_Modificacion" />
+          <ScalarProperty Name="usua_FechaModificacion" ColumnName="usua_FechaModificacion" />
+          <ScalarProperty Name="usua_Estado" ColumnName="usua_Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbActivos">
+      <EntityTypeMapping TypeName="ACTIVOSModel.tbActivos">
+        <MappingFragment StoreEntitySet="tbActivos">
+          <ScalarProperty Name="acvo_Id" ColumnName="acvo_Id" />
+          <ScalarProperty Name="acvo_Nombre" ColumnName="acvo_Nombre" />
+          <ScalarProperty Name="acvo_NumeroSerie" ColumnName="acvo_NumeroSerie" />
+          <ScalarProperty Name="viut_Id" ColumnName="viut_Id" />
+          <ScalarProperty Name="clie_Id" ColumnName="clie_Id" />
+          <ScalarProperty Name="acvo_Ubicacion" ColumnName="acvo_Ubicacion" />
+          <ScalarProperty Name="acvo_FechaAdquisicion" ColumnName="acvo_FechaAdquisicion" />
+          <ScalarProperty Name="acvo_InicioDepreciacion" ColumnName="acvo_InicioDepreciacion" />
+          <ScalarProperty Name="acvo_CostoOriginal" ColumnName="acvo_CostoOriginal" />
+          <ScalarProperty Name="acvo_ValorResidual" ColumnName="acvo_ValorResidual" />
+          <ScalarProperty Name="acvo_CostoDespreciable" ColumnName="acvo_CostoDespreciable" />
+          <ScalarProperty Name="usua_UsuarioCreacion" ColumnName="usua_UsuarioCreacion" />
+          <ScalarProperty Name="acvo_FechaCreacion" ColumnName="acvo_FechaCreacion" />
+          <ScalarProperty Name="usua_Modificacion" ColumnName="usua_Modificacion" />
+          <ScalarProperty Name="acvo_FechaModificacion" ColumnName="acvo_FechaModificacion" />
+          <ScalarProperty Name="acvo_Estado" ColumnName="acvo_Estado" />
+          <ScalarProperty Name="acvo_FechaBajada" ColumnName="acvo_FechaBajada" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbVidaUtil">
+      <EntityTypeMapping TypeName="ACTIVOSModel.tbVidaUtil">
+        <MappingFragment StoreEntitySet="tbVidaUtil">
+          <ScalarProperty Name="viut_Id" ColumnName="viut_Id" />
+          <ScalarProperty Name="viut_Objeto" ColumnName="viut_Objeto" />
+          <ScalarProperty Name="viut_Descripcion" ColumnName="viut_Descripcion" />
+          <ScalarProperty Name="viut_VidaUtil" ColumnName="viut_VidaUtil" />
+          <ScalarProperty Name="usua_UsuarioCreacion" ColumnName="usua_UsuarioCreacion" />
+          <ScalarProperty Name="viut_FechaCreacion" ColumnName="viut_FechaCreacion" />
+          <ScalarProperty Name="usua_Modificacion" ColumnName="usua_Modificacion" />
+          <ScalarProperty Name="viut_FechaModificacion" ColumnName="viut_FechaModificacion" />
+          <ScalarProperty Name="viut_Estado" ColumnName="viut_Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbClientes">
+      <EntityTypeMapping TypeName="ACTIVOSModel.tbClientes">
+        <MappingFragment StoreEntitySet="tbClientes">
+          <ScalarProperty Name="clie_Id" ColumnName="clie_Id" />
+          <ScalarProperty Name="clie_CodigoCompania" ColumnName="clie_CodigoCompania" />
+          <ScalarProperty Name="clie_NombreCliente" ColumnName="clie_NombreCliente" />
+          <ScalarProperty Name="clie_RTNCliente" ColumnName="clie_RTNCliente" />
+          <ScalarProperty Name="clie_Lugar" ColumnName="clie_Lugar" />
+          <ScalarProperty Name="clie_Responsale" ColumnName="clie_Responsale" />
+          <ScalarProperty Name="clie_Telefono" ColumnName="clie_Telefono" />
+          <ScalarProperty Name="usua_UsuarioCreacion" ColumnName="usua_UsuarioCreacion" />
+          <ScalarProperty Name="clie_FechaCreacion" ColumnName="clie_FechaCreacion" />
+          <ScalarProperty Name="usua_Modificacion" ColumnName="usua_Modificacion" />
+          <ScalarProperty Name="clie_FechaModificacion" ColumnName="clie_FechaModificacion" />
+          <ScalarProperty Name="clie_Estado" ColumnName="clie_Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="UDP_IniciarSesion" FunctionName="ACTIVOSModel.Store.UDP_IniciarSesion">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ACTIVOSModel.UDP_IniciarSesion_Result">
+          <ScalarProperty Name="usua_Id" ColumnName="usua_Id" />
+          <ScalarProperty Name="usua_UsuarioNombre" ColumnName="usua_UsuarioNombre" />
+          <ScalarProperty Name="usua_UsuarioApellido" ColumnName="usua_UsuarioApellido" />
+          <ScalarProperty Name="usua_Usuario" ColumnName="usua_Usuario" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UDP_tbusuarios_CambiarPassword" FunctionName="ACTIVOSModel.Store.UDP_tbusuarios_CambiarPassword" />
+    <FunctionImportMapping FunctionImportName="UDP_tbUsuarios_DeshabilitarUsuarios" FunctionName="ACTIVOSModel.Store.UDP_tbUsuarios_DeshabilitarUsuarios" />
+    <FunctionImportMapping FunctionImportName="UDP_tbusuarios_EditarUsuario" FunctionName="ACTIVOSModel.Store.UDP_tbusuarios_EditarUsuario" />
+    <FunctionImportMapping FunctionImportName="UDP_tbUsuarios_HabilitarUsuarios" FunctionName="ACTIVOSModel.Store.UDP_tbUsuarios_HabilitarUsuarios" />
+    <FunctionImportMapping FunctionImportName="UDP_tbusuarios_InsertarUsuario" FunctionName="ACTIVOSModel.Store.UDP_tbusuarios_InsertarUsuario" />
+    <FunctionImportMapping FunctionImportName="UDP_tbUsuarios_ListarUsuarios" FunctionName="ACTIVOSModel.Store.UDP_tbUsuarios_ListarUsuarios">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ACTIVOSModel.UDP_tbUsuarios_ListarUsuarios_Result">
+          <ScalarProperty Name="usua_Id" ColumnName="usua_Id" />
+          <ScalarProperty Name="usua_UsuarioNombre" ColumnName="usua_UsuarioNombre" />
+          <ScalarProperty Name="usua_UsuarioApellido" ColumnName="usua_UsuarioApellido" />
+          <ScalarProperty Name="usua_Usuario" ColumnName="usua_Usuario" />
+          <ScalarProperty Name="usua_UsuarioCreacion" ColumnName="usua_UsuarioCreacion" />
+          <ScalarProperty Name="usua_FechaCreacion" ColumnName="usua_FechaCreacion" />
+          <ScalarProperty Name="usua_Modificacion" ColumnName="usua_Modificacion" />
+          <ScalarProperty Name="usua_FechaModificacion" ColumnName="usua_FechaModificacion" />
+          <ScalarProperty Name="usua_Estado" ColumnName="usua_Estado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UDP_tbUsuarios_VerificarUsuarios" FunctionName="ACTIVOSModel.Store.UDP_tbUsuarios_VerificarUsuarios" />
+    <FunctionImportMapping FunctionImportName="UDP_tb_Activos_DarBajaActivo" FunctionName="ACTIVOSModel.Store.UDP_tb_Activos_DarBajaActivo" />
+    <FunctionImportMapping FunctionImportName="UDP_tbActivos_DarDeBajaActivo" FunctionName="ACTIVOSModel.Store.UDP_tbActivos_DarDeBajaActivo" />
+    <FunctionImportMapping FunctionImportName="UDP_tbActivos_EditarActivos" FunctionName="ACTIVOSModel.Store.UDP_tbActivos_EditarActivos" />
+    <FunctionImportMapping FunctionImportName="UDP_tbActivos_InsertarActivos" FunctionName="ACTIVOSModel.Store.UDP_tbActivos_InsertarActivos" />
+    <FunctionImportMapping FunctionImportName="UDP_tbActivos_ListarActivos" FunctionName="ACTIVOSModel.Store.UDP_tbActivos_ListarActivos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ACTIVOSModel.UDP_tbActivos_ListarActivos_Result">
+          <ScalarProperty Name="acvo_Id" ColumnName="acvo_Id" />
+          <ScalarProperty Name="acvo_Nombre" ColumnName="acvo_Nombre" />
+          <ScalarProperty Name="acvo_NumeroSerie" ColumnName="acvo_NumeroSerie" />
+          <ScalarProperty Name="viut_Id" ColumnName="viut_Id" />
+          <ScalarProperty Name="viut_VidaUtil" ColumnName="viut_VidaUtil" />
+          <ScalarProperty Name="clie_Id" ColumnName="clie_Id" />
+          <ScalarProperty Name="clie_NombreCliente" ColumnName="clie_NombreCliente" />
+          <ScalarProperty Name="clie_CodigoCompania" ColumnName="clie_CodigoCompania" />
+          <ScalarProperty Name="acvo_Ubicacion" ColumnName="acvo_Ubicacion" />
+          <ScalarProperty Name="acvo_FechaAdquisicion" ColumnName="acvo_FechaAdquisicion" />
+          <ScalarProperty Name="acvo_InicioDepreciacion" ColumnName="acvo_InicioDepreciacion" />
+          <ScalarProperty Name="acvo_CostoOriginal" ColumnName="acvo_CostoOriginal" />
+          <ScalarProperty Name="acvo_ValorResidual" ColumnName="acvo_ValorResidual" />
+          <ScalarProperty Name="acvo_CostoDespreciable" ColumnName="acvo_CostoDespreciable" />
+          <ScalarProperty Name="acvo_Estado" ColumnName="acvo_Estado" />
+          <ScalarProperty Name="acvo_FechaCreacion" ColumnName="acvo_FechaCreacion" />
+          <ScalarProperty Name="acvo_FechaModificacion" ColumnName="acvo_FechaModificacion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UDP_tbActivos_ReporteFechas" FunctionName="ACTIVOSModel.Store.UDP_tbActivos_ReporteFechas">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ACTIVOSModel.UDP_tbActivos_ReporteFechas_Result">
+          <ScalarProperty Name="acvo_Nombre" ColumnName="acvo_Nombre" />
+          <ScalarProperty Name="acvo_NumeroSerie" ColumnName="acvo_NumeroSerie" />
+          <ScalarProperty Name="viut_Objeto" ColumnName="viut_Objeto" />
+          <ScalarProperty Name="viut_VidaUtil" ColumnName="viut_VidaUtil" />
+          <ScalarProperty Name="acvo_Ubicacion" ColumnName="acvo_Ubicacion" />
+          <ScalarProperty Name="acvo_FechaAdquisicion" ColumnName="acvo_FechaAdquisicion" />
+          <ScalarProperty Name="acvo_InicioDepreciacion" ColumnName="acvo_InicioDepreciacion" />
+          <ScalarProperty Name="acvo_CostoOriginal" ColumnName="acvo_CostoOriginal" />
+          <ScalarProperty Name="acvo_ValorResidual" ColumnName="acvo_ValorResidual" />
+          <ScalarProperty Name="acvo_FechaCreacion" ColumnName="acvo_FechaCreacion" />
+          <ScalarProperty Name="acvo_CostoDespreciable" ColumnName="acvo_CostoDespreciable" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UDP_tbActivos_VerificarActivosCliente" FunctionName="ACTIVOSModel.Store.UDP_tbActivos_VerificarActivosCliente" />
+    <FunctionImportMapping FunctionImportName="UDP_tbActivos_VerificarActivosNoDadosBajaCliente" FunctionName="ACTIVOSModel.Store.UDP_tbActivos_VerificarActivosNoDadosBajaCliente" />
+    <FunctionImportMapping FunctionImportName="UDP_tbActivos_VerificarActivosTotalesCliente" FunctionName="ACTIVOSModel.Store.UDP_tbActivos_VerificarActivosTotalesCliente" />
+    <FunctionImportMapping FunctionImportName="UDP_tbClientes_CantidadDeClientes" FunctionName="ACTIVOSModel.Store.UDP_tbClientes_CantidadDeClientes" />
+    <FunctionImportMapping FunctionImportName="UDP_tbClientes_ClienteConActivosBajados" FunctionName="ACTIVOSModel.Store.UDP_tbClientes_ClienteConActivosBajados">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ACTIVOSModel.UDP_tbClientes_ClienteConActivosBajados_Result">
+          <ScalarProperty Name="clie_NombreCliente" ColumnName="clie_NombreCliente" />
+          <ScalarProperty Name="clie_CodigoCompania" ColumnName="clie_CodigoCompania" />
+          <ScalarProperty Name="TotalActivos" ColumnName="TotalActivos" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UDP_tbClientes_ClienteConActivosNoBajados" FunctionName="ACTIVOSModel.Store.UDP_tbClientes_ClienteConActivosNoBajados">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ACTIVOSModel.UDP_tbClientes_ClienteConActivosNoBajados_Result">
+          <ScalarProperty Name="clie_NombreCliente" ColumnName="clie_NombreCliente" />
+          <ScalarProperty Name="clie_CodigoCompania" ColumnName="clie_CodigoCompania" />
+          <ScalarProperty Name="TotalActivos" ColumnName="TotalActivos" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UDP_tbVidaUtil_Editar" FunctionName="ACTIVOSModel.Store.UDP_tbVidaUtil_Editar" />
+    <FunctionImportMapping FunctionImportName="UDP_tbVidaUtil_Insertar" FunctionName="ACTIVOSModel.Store.UDP_tbVidaUtil_Insertar" />
+    <FunctionImportMapping FunctionImportName="UDP_tbVidaUtil_ListarVidaUtil" FunctionName="ACTIVOSModel.Store.UDP_tbVidaUtil_ListarVidaUtil">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ACTIVOSModel.UDP_tbVidaUtil_ListarVidaUtil_Result">
+          <ScalarProperty Name="viut_Id" ColumnName="viut_Id" />
+          <ScalarProperty Name="viut_Objeto" ColumnName="viut_Objeto" />
+          <ScalarProperty Name="viut_Descripcion" ColumnName="viut_Descripcion" />
+          <ScalarProperty Name="viut_VidaUtil" ColumnName="viut_VidaUtil" />
+          <ScalarProperty Name="viut_Estado" ColumnName="viut_Estado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UDP_tbVidaUtil_VidaUtilMasUsadas" FunctionName="ACTIVOSModel.Store.UDP_tbVidaUtil_VidaUtilMasUsadas">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ACTIVOSModel.UDP_tbVidaUtil_VidaUtilMasUsadas_Result">
+          <ScalarProperty Name="viut_Objeto" ColumnName="viut_Objeto" />
+          <ScalarProperty Name="viut_VidaUtil" ColumnName="viut_VidaUtil" />
+          <ScalarProperty Name="viut_Descripcion" ColumnName="viut_Descripcion" />
+          <ScalarProperty Name="CantidadUsadas" ColumnName="CantidadUsadas" />
+          <ScalarProperty Name="Porcentaje" ColumnName="Porcentaje" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GenerarReportePorCliente" FunctionName="ACTIVOSModel.Store.GenerarReportePorCliente">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ACTIVOSModel.GenerarReportePorCliente_Result">
+          <ScalarProperty Name="acvo_Nombre" ColumnName="acvo_Nombre" />
+          <ScalarProperty Name="viut_Descripcion" ColumnName="viut_Descripcion" />
+          <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
+          <ScalarProperty Name="acvo_FechaAdquisicion" ColumnName="acvo_FechaAdquisicion" />
+          <ScalarProperty Name="acvo_InicioDepreciacion" ColumnName="acvo_InicioDepreciacion" />
+          <ScalarProperty Name="acvo_CostoOriginal" ColumnName="acvo_CostoOriginal" />
+          <ScalarProperty Name="viut_VidaUtil" ColumnName="viut_VidaUtil" />
+          <ScalarProperty Name="acvo_ValorResidual" ColumnName="acvo_ValorResidual" />
+          <ScalarProperty Name="acvo_CostoDespreciable" ColumnName="acvo_CostoDespreciable" />
+          <ScalarProperty Name="PeriodoMeses" ColumnName="PeriodoMeses" />
+          <ScalarProperty Name="TasaMensual" ColumnName="TasaMensual" />
+          <ScalarProperty Name="PeriodoA" ColumnName="PeriodoA" />
+          <ScalarProperty Name="TasaAnual" ColumnName="TasaAnual" />
+          <ScalarProperty Name="DepPeriodoMeses" ColumnName="DepPeriodoMeses" />
+          <ScalarProperty Name="DepEnero" ColumnName="DepEnero" />
+          <ScalarProperty Name="DepFebrero" ColumnName="DepFebrero" />
+          <ScalarProperty Name="DepMarzo" ColumnName="DepMarzo" />
+          <ScalarProperty Name="DepAbril" ColumnName="DepAbril" />
+          <ScalarProperty Name="DepMayo" ColumnName="DepMayo" />
+          <ScalarProperty Name="DepJunio" ColumnName="DepJunio" />
+          <ScalarProperty Name="DepJulio" ColumnName="DepJulio" />
+          <ScalarProperty Name="DepAgosto" ColumnName="DepAgosto" />
+          <ScalarProperty Name="DepSeptiembre" ColumnName="DepSeptiembre" />
+          <ScalarProperty Name="DepOctubre" ColumnName="DepOctubre" />
+          <ScalarProperty Name="DepNoviembre" ColumnName="DepNoviembre" />
+          <ScalarProperty Name="DepDiciembre" ColumnName="DepDiciembre" />
+          <ScalarProperty Name="DelPeriodo" ColumnName="DelPeriodo" />
+          <ScalarProperty Name="ACUMULADA" ColumnName="ACUMULADA" />
+          <ScalarProperty Name="ValorLibro" ColumnName="ValorLibro" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UDP_tbClientes_EditarClientes" FunctionName="ACTIVOSModel.Store.UDP_tbClientes_EditarClientes" />
+    <FunctionImportMapping FunctionImportName="UDP_tbClientes_InsertarClientes" FunctionName="ACTIVOSModel.Store.UDP_tbClientes_InsertarClientes" />
+    <FunctionImportMapping FunctionImportName="UDP_tbClientes_ListarClientes" FunctionName="ACTIVOSModel.Store.UDP_tbClientes_ListarClientes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ACTIVOSModel.UDP_tbClientes_ListarClientes_Result">
+          <ScalarProperty Name="clie_Id" ColumnName="clie_Id" />
+          <ScalarProperty Name="clie_CodigoCompania" ColumnName="clie_CodigoCompania" />
+          <ScalarProperty Name="clie_NombreCliente" ColumnName="clie_NombreCliente" />
+          <ScalarProperty Name="clie_Responsale" ColumnName="clie_Responsale" />
+          <ScalarProperty Name="clie_RTNCliente" ColumnName="clie_RTNCliente" />
+          <ScalarProperty Name="clie_Lugar" ColumnName="clie_Lugar" />
+          <ScalarProperty Name="clie_Telefono" ColumnName="clie_Telefono" />
+          <ScalarProperty Name="clie_FechaCreacion" ColumnName="clie_FechaCreacion" />
+          <ScalarProperty Name="clie_FechaModificacion" ColumnName="clie_FechaModificacion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UDP_tbClientes_ValidarRTN" FunctionName="ACTIVOSModel.Store.UDP_tbClientes_ValidarRTN" />
+  </EntityContainerMapping>
+</Mapping>
